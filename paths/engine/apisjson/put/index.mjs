@@ -10,14 +10,14 @@ export function handler(event, context, callback) {
     host     : process.env.host,
     user     : process.env.user,
     password : process.env.password,
-    database : dprocess.env.database
+    database : process.env.database
     });
 
     console.log({
       host     : process.env.host,
       user     : process.env.user,
       password : process.env.password,
-      database : dprocess.env.database
+      database : process.env.database
       });
      
     var sql = "SELECT url FROM openapi WHERE pulled IS NULL LIMIT 1";
