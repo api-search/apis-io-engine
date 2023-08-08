@@ -42,7 +42,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Latest"
 
-  '/engine/apis/properties':
+  '/engine/apisjson/apis/properties':
 
     put:
       operationId: processesLatestAPIProperties
