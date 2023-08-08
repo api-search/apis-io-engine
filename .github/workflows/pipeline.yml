@@ -58,7 +58,7 @@ jobs:
 
       # Dynamic below here
       - name: /engine/apis/properties put lambda deploy zip
-        uses: api-search/engine-api/engine-api@main
+        uses: engine-api/engine-api@main
         with:
             args: zip -qq -r m-s-engineapisproperties-pu.zip paths/engine/apis/properties/put/index.js node_modules
       - name: videos get lambda deploy
@@ -70,7 +70,7 @@ jobs:
             function_name: m-s-engineapisproperties-pu
             zip_file: m-s-engineapisproperties-pu.zip
       - name: /engine/apisjson put lambda deploy zip
-        uses: api-search/engine-api/engine-api@main
+        uses: engine-api/engine-api@main
         with:
             args: zip -qq -r m-s-engineapisjson-pu.zip paths/engine/apisjson/put/index.js node_modules
       - name: videos get lambda deploy
