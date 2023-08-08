@@ -60,7 +60,7 @@ jobs:
       - name: /engine/apisjson/apis/properties put lambda deploy zip
         uses: api-search/engine-api@main
         with:
-          args: zip -qq -r m-s-apis-io-engineapisjsonapisproperties-pu.zip paths/engine/apisjson/apis/properties/put/index.js node_modules
+          args: zip -qq -r m-s-apis-io-engineapisjsonapisproperties-pu.zip paths/engine/apisjson/apis/properties/put/index.mjs node_modules
       - name: engine-api get lambda deploy
         uses: appleboy/lambda-action@master
         with:
@@ -69,10 +69,11 @@ jobs:
           aws_region: us-east-1
           function_name: m-s-apis-io-engineapisjsonapisproperties-pu
           zip_file: m-s-apis-io-engineapisjsonapisproperties-pu.zip
+        
       - name: /engine/apisjson put lambda deploy zip
         uses: api-search/engine-api@main
         with:
-          args: zip -qq -r m-s-apis-io-engineapisjson-pu.zip paths/engine/apisjson/put/index.js node_modules
+          args: zip -qq -r m-s-apis-io-engineapisjson-pu.zip paths/engine/apisjson/put/index.mjs node_modules
       - name: engine-api get lambda deploy
         uses: appleboy/lambda-action@master
         with:
