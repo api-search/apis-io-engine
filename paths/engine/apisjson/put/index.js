@@ -136,6 +136,7 @@ exports.handler = vandium.generic()
                 insert_maintainers = insert_maintainers.substring(0, insert_maintainers.length - 1);
                 api_base_urls = api_base_urls.substring(0, api_base_urls.length - 1);
                 
+                // Nested fun
                 var sql1 = "DELETE FROM apis WHERE openapi_url = '" + openapi_url + "'";
                 connection.query(sql1, function (error1, results1, fields) { 
                   
