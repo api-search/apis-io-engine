@@ -1,6 +1,6 @@
 import * as mysql from "mysql";
 import * as https from "https";
-import AjvMoAjvdule from 'ajv';
+import Ajv from 'ajv';
 
 const Ajv = Ajv.default({allErrors: true,strict: false});
 
