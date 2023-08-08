@@ -12,12 +12,12 @@ export function handler(event, context, callback) {
     password : process.env.password,
     database : process.env.database
     });
-    
+     
     var sql = "SELECT url FROM openapi WHERE pulled IS NULL LIMIT 1";
     connection.query(sql, function (error, results, fields) { 
       
       callback(null,error);
-      
+
     });  
   
 };
