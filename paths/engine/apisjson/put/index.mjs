@@ -21,6 +21,10 @@ export function handler(event, context, callback) {
       });
      
     var sql = "SELECT url FROM openapi WHERE pulled IS NULL LIMIT 1";
-    callback(null,sql); 
+    connection.query(sql, function (error, results, fields) { 
+      
+      callback(null,error);
+
+    });  
   
 };
