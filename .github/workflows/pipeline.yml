@@ -60,24 +60,24 @@ jobs:
       - name: /engine/apis/properties put lambda deploy zip
         uses: api-search/engine-api@main
         with:
-            args: zip -qq -r m-s-engineapisproperties-pu.zip paths/engine/apis/properties/put/index.js node_modules
+            args: zip -qq -r m-s-apis-io-engineapisproperties-pu.zip paths/engine/apis/properties/put/index.js node_modules
       - name: videos get lambda deploy
         uses: appleboy/lambda-action@master
         with:
             aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
             aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
             aws_region: us-west-1
-            function_name: m-s-engineapisproperties-pu
-            zip_file: m-s-engineapisproperties-pu.zip
+            function_name: m-s-apis-io-engineapisproperties-pu
+            zip_file: m-s-apis-io-engineapisproperties-pu.zip
       - name: /engine/apisjson put lambda deploy zip
         uses: api-search/engine-api@main
         with:
-            args: zip -qq -r m-s-engineapisjson-pu.zip paths/engine/apisjson/put/index.js node_modules
+            args: zip -qq -r m-s-apis-io-engineapisjson-pu.zip paths/engine/apisjson/put/index.js node_modules
       - name: videos get lambda deploy
         uses: appleboy/lambda-action@master
         with:
             aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
             aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
             aws_region: us-west-1
-            function_name: m-s-engineapisjson-pu
-            zip_file: m-s-engineapisjson-pu.zip
+            function_name: m-s-apis-io-engineapisjson-pu
+            zip_file: m-s-apis-io-engineapisjson-pu.zip
