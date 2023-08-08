@@ -1,8 +1,6 @@
-const vandium = require('vandium');
-const mysql  = require('mysql');
+import * as mysql from "mysql";
 
-exports.handler = vandium.generic()
-  .handler( (event, context, callback) => {
+export function handler(event, context, callback) {
 
     var connection = mysql.createConnection({
     host     : process.env.host,
@@ -31,4 +29,5 @@ exports.handler = vandium.generic()
     callback( null );
 
   });
-});
+  
+};

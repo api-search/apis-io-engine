@@ -1,11 +1,10 @@
-const vandium = require('vandium');
-const mysql  = require('mysql');
-const https  = require('https');
-const Ajv = require("ajv")
+import * as mysql from "mysql";
+import * as https from "https";
+import * as ajv from "ajv";
+
 const ajv = new Ajv({allErrors: true,strict: false}) // options can be passed, e.g. {allErrors: true}
 
-exports.handler = vandium.generic()
-  .handler( (event, context, callback) => {
+export function handler(event, context, callback) {
 
     var connection = mysql.createConnection({
     host     : process.env.host,
@@ -242,4 +241,4 @@ exports.handler = vandium.generic()
       
     });  
   
-});
+};
