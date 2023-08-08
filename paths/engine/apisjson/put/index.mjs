@@ -2,7 +2,7 @@ import * as mysql from "mysql";
 import * as https from "https";
 import Ajv from 'ajv';
 
-const ajv = Ajv.default({allErrors: true,strict: false});
+const ajv = new Ajv.default({allErrors: true,strict: false});
 
 export function handler(event, context, callback) {
 
