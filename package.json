@@ -1,9 +1,7 @@
 {
-  "name": "apis-io-api",
+  "name": "apis-io-engine-api",
   "version": "1.0.0",
-  "description": "This is the API for the APIs.io search engine.",
-  "main": "dist/core.js",
-  "types": "dist/core.d.ts",
+  "description": "This is the engine API for the APIs.io search engine.",
   "dependencies": {
     "ajv": "^8.12.0",
     "async": "*",
