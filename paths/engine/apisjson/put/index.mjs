@@ -1,8 +1,8 @@
 import * as mysql from "mysql";
 import * as https from "https";
-import * as Ajv from "ajv";
+import AjvMoAjvdule from 'ajv';
 
-const ajv = new Ajv({allErrors: true,strict: false}) // options can be passed, e.g. {allErrors: true}
+const Ajv = Ajv.default({allErrors: true,strict: false});
 
 export function handler(event, context, callback) {
 
