@@ -5,6 +5,15 @@ const Ajv = require("ajv")
 const ajv = new Ajv({allErrors: true,strict: false}) // options can be passed, e.g. {allErrors: true}
 const AWS = require("aws-sdk");
 
+function covertObjectToBinary(obj) {
+  let output = '',
+      input = JSON.stringify(obj)
+  for (i = 0; i < input.length; i++) {
+      output += input[i].charCodeAt(0).toString(2) + " ";
+  }
+  return output.trimEnd();
+}
+
 const s3 = new AWS.S3({
   accessKeyId: process.env.key,
   secretAccessKey: process.env.secret, 
@@ -230,13 +239,11 @@ exports.handler = vandium.generic()
                               Key: save_apisjson_path 
                             };
 
-                            console.log(params);
-
-                            console.log(apisjson);
+                            console.log(params);                            
                             
-                            var write_apisjson = JSON.stringify(apisjson);
+                            var write_apisjson = covertObjectToBinary(apisjson);
 
-                            outcome.write_apisjson = write_apisjson;
+                            outcome.write_apisjson = covertObjectToBinary(apisjson);
 
                             s3.putObject(params, function (err, write_apisjson) {
                                 if (err) {
