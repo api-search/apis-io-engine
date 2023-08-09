@@ -67,6 +67,7 @@ exports.handler = vandium.generic()
 
               if(!error && res.statusCode == 200){
                 
+                // Success - Let's update ands ave
                 const property_content = Buffer.concat(data).toString();
 
                 var outcome = {};
@@ -96,12 +97,28 @@ exports.handler = vandium.generic()
               }
               else{
 
+                // Problem -- Let's record
                 var outcome = {};
                 outcome.status = res.statusCode;
                 outcome.property_content = '';
-                outcome.save_apisjson_path = '';
+                outcome.save_property_path = '';
 
-                callback( null, outcome );
+                var sql = "UPDATE properties SET pulled = " + connection.escape(weekNumber) + ",status = " + connection.escape(res.statusCode) + ",path = " + connection.escape(save_property_path) + " WHERE api_base_url = " + connection.escape(api_base_url) + " AND url = " + connection.escape(property_url);
+                outcome.sql = sql;
+                connection.query(sql, function (error, results, fields) {                  
+
+                  var sql1 = "DELETE FROM properties_pull WHERE url = '" + property_url + "' AND week = " + weekNumber;
+                  outcome.sql1 = sql1;
+                  connection.query(sql1, function (error1, results1, fields) { 
+                    
+                    var sql2 = "INSERT INTO properties_pull(pulled,url,status) VALUES(" + connection.escape(weekNumber) + "," + connection.escape(property_url) + "," + connection.escape(res.statusCode) + ")";
+                    outcome.sql2 = sql2;
+                    connection.query(sql2, function (error2, results2, fields) {     
+
+                      callback( null, outcome );
+
+                    });
+                  }); 
 
               }
 
