@@ -231,25 +231,30 @@ exports.handler = vandium.generic()
                             }
                             else{
                               outcome.results6 = error6;
-                            }                             
+                            }                                                       
                             
-                            // Write the APIs.json to AWS S3 Bucket
-                            const params = {
-                              Bucket: "kinlane-productions2",
-                              Key: save_apisjson_path 
+                            var buf = Buffer.from(JSON.stringify(apisjson));
+
+                            var params = {
+                                Bucket: 'kinlane-productions2',
+                                Key: save_apisjson_path,
+                                Body: buf,
+                                ContentEncoding: 'base64',
+                                ContentType: 'application/json',
+                                ACL: 'public-read'
                             };
 
-                            console.log(params);                            
-                            
-                            var write_apisjson = covertObjectToBinary(apisjson);
+                            console.log(params);  
 
-                            outcome.write_apisjson = covertObjectToBinary(apisjson);
-
-                            s3.putObject(params, function (err, write_apisjson) {
+                            s3.putObject(params, function (err, data) {
                                 if (err) {
                                     reject(err)
                                 } else {
+                                      
                                       console.log("Successfully uploaded data to bucket");
+                                      
+                                      outomce.data = data;
+                                      
                                       callback( null, outcome );     
                                 }
                             });                                  
