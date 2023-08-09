@@ -255,6 +255,9 @@ exports.handler = vandium.generic()
                                       
                                       outcome.data = data;
 
+                                      outcome = {};
+                                      outcome.message = "Successfully processed the APIs.json file."
+
                                       callback( null, outcome );     
                                 }
                             });                                  
