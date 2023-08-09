@@ -34,8 +34,11 @@ exports.handler = vandium.generic()
           
         // Pull any new ones.
         var api_base_url = results[0].api_base_url;
+        console.log(api_base_url);
         var property_type = results[0].type;
+        console.log(property_type);
         var property_url = results[0].url;
+        console.log(property_url);
 
         var property_slug = property_url.replace('http://','http-');
         property_slug = property_slug.replace('.json','');
@@ -84,6 +87,7 @@ exports.handler = vandium.generic()
                     connection.query(sql2, function (error2, results2, fields) {     
 
                       callback( null, outcome );
+
                     });
                   });   
 
