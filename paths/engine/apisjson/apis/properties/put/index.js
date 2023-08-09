@@ -120,6 +120,8 @@ exports.handler = vandium.generic()
                     });
                   }); 
 
+                });   
+
               }
 
             });
