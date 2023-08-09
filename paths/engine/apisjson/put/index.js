@@ -221,18 +221,8 @@ exports.handler = vandium.generic()
                               Key: save_apisjson_path 
                             };
 
-                            const s3upload = function (params) {
-                              return new Promise((resolve, reject) => {
-                                s3.putObject(params, function (err, apisjson) {
-                                    if (err) {
-                                        reject(err)
-                                    } else {
-                                          console.log("Successfully uploaded data to bucket");
-                                          callback( null, outcome );     
-                                    }
-                                });
-                              });
-                          }                                      
+                            console.log(params);
+                            callback( null, outcome );                                   
                         
                           });   
                           
