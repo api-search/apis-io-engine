@@ -87,7 +87,37 @@ exports.handler = vandium.generic()
                     outcome.sql2 = sql2;
                     connection.query(sql2, function (error2, results2, fields) {     
 
-                      callback( null, outcome );
+                      // Write to S#
+                      var buf = Buffer.from(property_content);
+
+                      var params = {
+                          Bucket: 'kinlane-productions2',
+                          Key: save_property_path,
+                          Body: buf,
+                          ContentEncoding: 'base64',
+                          ContentType: 'application/json',
+                          ACL: 'public-read'
+                      };
+
+                      console.log(params);  
+
+                      s3.putObject(params, function (err, data) {
+                          if (err) {
+                              reject(err)
+                          } else {
+                                
+                                console.log("Successfully uploaded data to bucket");
+                                
+                                outcome.data = data;
+
+                                outcome = {};
+                                outcome.message = "Successfully processed the API property."
+
+                                callback( null, outcome );     
+                          }
+                      });                                  
+                                        
+
 
                     });
                   });   
@@ -103,7 +133,7 @@ exports.handler = vandium.generic()
                 outcome.property_content = '';
                 outcome.save_property_path = '';
 
-                var sql = "UPDATE properties SET pulled = " + connection.escape(weekNumber) + ",status = " + connection.escape(res.statusCode) + ",path = " + connection.escape(save_property_path) + " WHERE api_base_url = " + connection.escape(api_base_url) + " AND url = " + connection.escape(property_url);
+                var sql = "UPDATE properties SET pulled = " + connection.escape(weekNumber) + ",status = " + connection.escape(res.statusCode) + ",path = '' WHERE api_base_url = " + connection.escape(api_base_url) + " AND url = " + connection.escape(property_url);
                 outcome.sql = sql;
                 connection.query(sql, function (error, results, fields) {                  
 

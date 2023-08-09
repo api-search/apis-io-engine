@@ -106,7 +106,7 @@ exports.handler = vandium.generic()
                   
                   // properties
                   for (let j = 0; j < apisjson.apis[i].properties.length; j++) {
-                    insert_properties += "(" + connection.escape(apisjson.apis[i].baseURL) + "," + connection.escape( apisjson.apis[i].properties[j].type) + "," + connection.escape(apisjson.apis[i].properties[j].url) + "),";
+                    insert_properties += "(" + connection.escape(apisjson.apis[i].baseURL) + "," + connection.escape( apisjson.apis[i].properties[j].type) + "," + connection.escape(apisjson.apis[i].properties[j].url.replace('http:','https:')) + "),";
                     api_base_urls += connection.escape(apisjson.apis[i].baseURL) + ",";
                   }
                   
