@@ -1,10 +1,8 @@
-import * as mysql from "mysql";
-import * as https from "https";
-import Ajv from 'ajv';
+const vandium = require('vandium');
+const mysql  = require('mysql');
 
-const ajv = new Ajv.default({allErrors: true,strict: false});
-
-export function handler(event, context, callback) {
+exports.handler = vandium.generic()
+  .handler( (event, context, callback) => {
 
     var connection = mysql.createConnection({
     host     : process.env.host,
@@ -16,8 +14,8 @@ export function handler(event, context, callback) {
     var sql = "SELECT url FROM openapi WHERE pulled IS NULL LIMIT 1";
     connection.query(sql, function (error, results, fields) { 
       
-      callback(null,error);
+      callback(null,results);
 
     });  
   
-};
+});
