@@ -35,7 +35,7 @@ exports.handler = vandium.generic()
 
         var save_apisjson_path = 'apis-io/api/apis-json/' + apisjson_slug + '/';
         
-        https.get(url, res => {
+        https.get(apisjson_url, res => {
           
           let data = [];
           const headerDate = res.headers && res.headers.date ? res.headers.date : 'no response date';
