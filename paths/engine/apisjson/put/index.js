@@ -3,6 +3,13 @@ const mysql  = require('mysql');
 const https  = require('https');
 const Ajv = require("ajv")
 const ajv = new Ajv({allErrors: true,strict: false}) // options can be passed, e.g. {allErrors: true}
+const AWS = require("aws");
+
+const s3 = new AWS.S3({
+  accessKeyId: process.env.key,
+  secretAccessKey: process.env.secret, 
+  Bucket: "kinlane-productions2"
+});
 
 exports.handler = vandium.generic()
   .handler( (event, context, callback) => {
@@ -14,13 +21,19 @@ exports.handler = vandium.generic()
     database : process.env.database
     });
     
-    var sql = "SELECT url FROM openapi WHERE pulled IS NULL LIMIT 1";
+    var sql = "SELECT url FROM apisjson WHERE pulled IS NULL LIMIT 1";
     connection.query(sql, function (error, results, fields) { 
       
       if(results && results.length > 0){
         
         // Pull any new ones.
-        let url = results[0].url;
+        var apisjson_url = results[0].url;
+        var apisjson_slug = apisjson_url.replace('http://','-');
+        apisjson_slug = apisjson_slug.replace('https://','-');
+        apisjson_slug = apisjson_slug.replace(/\//g, '-');
+        apisjson_slug = apisjson_slug.replace('.','-');
+
+        var save_apisjson_path = 'apis-io/api/apis-json/' + apisjson_slug + '/';
         
         https.get(url, res => {
           
@@ -41,9 +54,7 @@ exports.handler = vandium.generic()
             const apisjson = JSON.parse(Buffer.concat(data).toString());
             
             // validate
-            let schema = {"title":"A JSON Schema for apis.json, version 0.14","type":"object","additionalProperties":false,"patternProperties":{"^X-":{"type":"object"}},"definitions":{"maintainers":{"description":"The person or organization responsible for maintaining the API","required":["name"],"properties":{"name":{"type":"string","description":"name","minLength":5}},"additionalProperties":{"type":"string"}},"apis":{"description":"The description of the API","oneOf":[{"required":["name","description","image","baseURL","humanURL","properties","contact"],"properties":{"name":{"type":"string","description":"name","minLength":2},"description":{"type":"string","description":"description of the API","minLength":5},"image":{"type":"string","description":"URL of an image representing the API"},"baseURL":{"type":"string","pattern":"^(http)|(https)://(.*)$","description":"baseURL"},"humanURL":{"type":"string","pattern":"^(http)|(https)://(.*)$","description":"humanURL"},"tags":{"type":"array","items":{"type":"string","minLength":1},"description":"tags to describe the API"},"properties":{"type":"array","items":{"$ref":"#/definitions/urls"},"description":"URLs"},"contact":{"type":"array","items":{"$ref":"#/definitions/contact"},"description":"Contact to reach if questions about API"},"meta":{"type":"array","items":{"$ref":"#/definitions/metaInformation"}}}}]},"metaInformation":{"description":"Metadata about the API","required":["key","value"],"properties":{"key":{"type":"string"},"value":{"type":"string"}}},"contact":{"description":"Information on contacting the API support","required":["FN"],"additionalProperties":true,"patternProperties":{"^X-":{"type":"string"}},"properties":{"FN":{"type":"string","minLength":1},"email":{"type":"string"},"organizationName":{"type":"string"},"adr":{"type":"string"},"tel":{"type":"string"},"X-twitter":{"type":"string"},"X-github":{"type":"string"},"photo":{"type":"string","pattern":"^(http)|(https)://(.*)$"},"vCard":{"type":"string","pattern":"^(http)|(https)://(.*)$"},"url":{"type":"string","pattern":"^(http)|(https)://(.*)$"}}},"urls":{"description":"A representation of a URL","required":["type","url"],"properties":{"type":{"type":"string","pattern":"^(Swagger)$|^(RAML)$|^(Blueprint)$|^(WADL)$|^(WSDL)$|^(TermsOfService)$|^(InterfaceLicense)$|^(StatusPage)$|^(Pricing)$|^(Forums)$|^(AlertsTwitterHandle)$|^(X-[A-Za-z0-9\\-]*)$"},"url":{"type":"string","pattern":"^(http)|(https)://(.*)$"}}},"tags":{"description":"A consistent set of tag to apply to a description"},"include":{"description":"Include other APIs.json file","required":["name","url"],"properties":{"name":{"type":"string","minLength":1},"url":{"type":"string","pattern":"^(http)|(https)://(.*)$"}}}},"required":["name","description","url","apis","maintainers","tags"],"properties":{"name":{"type":"string","description":"The name of the service described","minLength":5},"description":{"type":"string","description":"Description of the service","minLength":5},"url":{"type":"string","description":"URL where the apis.json file will live","pattern":"^(http)|(https)://(.*)$"},"image":{"type":"string","description":"Image to represent the API"},"created":{"type":"string","description":"Date when the file was created"},"modified":{"type":"string","description":"Date when the file was modified"},"specificationVersion":{"type":"string","description":"APIs.json spec version, latest is 0.14"},"apis":{"type":"array","items":{"$ref":"#/definitions/apis"},"description":"All the APIs of this service"},"maintainers":{"type":"array","items":{"$ref":"#/definitions/contact"},"description":"Maintainers of the apis.json file"},"tags":{"type":"array","items":{"$ref":"#/definitions/tags"},"description":"Tags to describe the service"},"include":{"type":"array","items":{"$ref":"#/definitions/include"},"description":"Links to other apis.json definitions included in this service"}}};
-            
-            let openapi_url = url;
+            let schema = {"title":"A JSON Schema for apis.json, version 0.14","type":"object","additionalProperties":false,"patternProperties":{"^X-":{"type":"object"}},"definitions":{"maintainers":{"description":"The person or organization responsible for maintaining the API","required":["name"],"properties":{"name":{"type":"string","description":"name","minLength":5}},"additionalProperties":{"type":"string"}},"apis":{"description":"The description of the API","oneOf":[{"required":["name","description","image","baseURL","humanURL","properties","contact"],"properties":{"name":{"type":"string","description":"name","minLength":2},"description":{"type":"string","description":"description of the API","minLength":5},"image":{"type":"string","description":"URL of an image representing the API"},"baseURL":{"type":"string","pattern":"^(http)|(https)://(.*)$","description":"baseURL"},"humanURL":{"type":"string","pattern":"^(http)|(https)://(.*)$","description":"humanURL"},"tags":{"type":"array","items":{"type":"string","minLength":1},"description":"tags to describe the API"},"properties":{"type":"array","items":{"$ref":"#/definitions/urls"},"description":"URLs"},"contact":{"type":"array","items":{"$ref":"#/definitions/contact"},"description":"Contact to reach if questions about API"},"meta":{"type":"array","items":{"$ref":"#/definitions/metaInformation"}}}}]},"metaInformation":{"description":"Metadata about the API","required":["key","value"],"properties":{"key":{"type":"string"},"value":{"type":"string"}}},"contact":{"description":"Information on contacting the API support","required":["FN"],"additionalProperties":true,"patternProperties":{"^X-":{"type":"string"}},"properties":{"FN":{"type":"string","minLength":1},"email":{"type":"string"},"organizationName":{"type":"string"},"adr":{"type":"string"},"tel":{"type":"string"},"X-twitter":{"type":"string"},"X-github":{"type":"string"},"photo":{"type":"string","pattern":"^(http)|(https)://(.*)$"},"vCard":{"type":"string","pattern":"^(http)|(https)://(.*)$"},"url":{"type":"string","pattern":"^(http)|(https)://(.*)$"}}},"urls":{"description":"A representation of a URL","required":["type","url"],"properties":{"type":{"type":"string","pattern":"^(Swagger)$|^(RAML)$|^(Blueprint)$|^(WADL)$|^(WSDL)$|^(TermsOfService)$|^(InterfaceLicense)$|^(StatusPage)$|^(Pricing)$|^(Forums)$|^(AlertsTwitterHandle)$|^(X-[A-Za-z0-9\\-]*)$"},"url":{"type":"string","pattern":"^(http)|(https)://(.*)$"}}},"tags":{"description":"A consistent set of tag to apply to a description"},"include":{"description":"Include other APIs.json file","required":["name","url"],"properties":{"name":{"type":"string","minLength":1},"url":{"type":"string","pattern":"^(http)|(https)://(.*)$"}}}},"required":["name","description","url","apis","maintainers","tags"],"properties":{"name":{"type":"string","description":"The name of the service described","minLength":5},"description":{"type":"string","description":"Description of the service","minLength":5},"url":{"type":"string","description":"URL where the apis.json file will live","pattern":"^(http)|(https)://(.*)$"},"image":{"type":"string","description":"Image to represent the API"},"created":{"type":"string","description":"Date when the file was created"},"modified":{"type":"string","description":"Date when the file was modified"},"specificationVersion":{"type":"string","description":"APIs.json spec version, latest is 0.14"},"apis":{"type":"array","items":{"$ref":"#/definitions/apis"},"description":"All the APIs of this service"},"maintainers":{"type":"array","items":{"$ref":"#/definitions/contact"},"description":"Maintainers of the apis.json file"},"tags":{"type":"array","items":{"$ref":"#/definitions/tags"},"description":"Tags to describe the service"},"include":{"type":"array","items":{"$ref":"#/definitions/include"},"description":"Links to other apis.json definitions included in this service"}}};          
             
             const date = new Date();
             var created = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();             
@@ -52,7 +63,7 @@ exports.handler = vandium.generic()
             
             const valid = validate(apisjson)
             if (!valid){
-              var sql = "UPDATE openapi SET pulled='" + created + "', valid = 0 WHERE url = " + connection.escape(openapi_url);
+              var sql = "UPDATE apisjson SET pulled='" + created + "', valid = 0 WHERE url = " + connection.escape(apisjson_url);
               connection.query(sql, function (error, results, fields) {               
               callback( null, "Not valid APIs.json." );
               });
@@ -61,11 +72,11 @@ exports.handler = vandium.generic()
               
               // Let's Process
               // What do we do with invalid??
-              let openapi_name = apisjson.name;
-              let openapi_description = apisjson.description;
-              let openapi_image = apisjson.image;
+              let apisjson_name = apisjson.name;
+              let apisjson_description = apisjson.description;
+              let apisjson_image = apisjson.image;
                     
-              var sql = "UPDATE openapi SET valid=1, name = " + connection.escape(openapi_name) + ",description = " + connection.escape(openapi_description) + ",image = " + connection.escape(openapi_image) + ",pulled='" + created + "' WHERE url = " + connection.escape(openapi_url);
+              var sql = "UPDATE apisjson SET valid=1, name = " + connection.escape(apisjson_name) + ",description = " + connection.escape(apisjson_description) + ",image = " + connection.escape(apisjson_image) + ",pulled='" + created + "' WHERE url = " + connection.escape(apisjson_url);
               connection.query(sql, function (error, results, fields) {  
                 
                 let insert_apis = '';
@@ -83,7 +94,7 @@ exports.handler = vandium.generic()
                   api_name = api_name.replace("'","");
                   
                   // apis
-                  insert_apis += "('" + openapi_url + "'," + connection.escape(api_name) + "," +  connection.escape(apisjson.apis[i].description) + "," +  connection.escape(apisjson.apis[i].image) + "," +  connection.escape(apisjson.apis[i].baseURL) + "," +  connection.escape(apisjson.apis[i].humanURL) + "," + connection.escape(apisjson.apis[i].tags.join(',')) + "),";
+                  insert_apis += "('" + apisjson_url + "'," + connection.escape(api_name) + "," +  connection.escape(apisjson.apis[i].description) + "," +  connection.escape(apisjson.apis[i].image) + "," +  connection.escape(apisjson.apis[i].baseURL) + "," +  connection.escape(apisjson.apis[i].humanURL) + "," + connection.escape(apisjson.apis[i].tags.join(',')) + "),";
                   
                   // properties
                   for (let j = 0; j < apisjson.apis[i].properties.length; j++) {
@@ -94,7 +105,7 @@ exports.handler = vandium.generic()
                   // maintainers
                   let j = 0;
                     
-                  insert_maintainers += "(" + connection.escape(openapi_url) + ",";
+                  insert_maintainers += "(" + connection.escape(apisjson_url) + ",";
                   
                   // FN
                   if(apisjson.maintainers[j].FN){
@@ -136,10 +147,10 @@ exports.handler = vandium.generic()
                 insert_maintainers = insert_maintainers.substring(0, insert_maintainers.length - 1);
                 api_base_urls = api_base_urls.substring(0, api_base_urls.length - 1);
                 
-                var sql1 = "DELETE FROM apis WHERE openapi_url = '" + openapi_url + "'";
+                var sql1 = "DELETE FROM apis WHERE apisjson_url = '" + apisjson_url + "'";
                 connection.query(sql1, function (error1, results1, fields) { 
                   
-                  var sql2 = "INSERT INTO apis(openapi_url,name,description,image,baseURL,humanURL,tags) VALUES" + insert_apis;
+                  var sql2 = "INSERT INTO apis(apisjson_url,name,description,image,baseURL,humanURL,tags) VALUES" + insert_apis;
                   connection.query(sql2, function (error2, results2, fields) {                   
                   
                     var sql3 = "DELETE FROM properties WHERE api_base_url IN(" + api_base_urls + ")";
@@ -148,10 +159,10 @@ exports.handler = vandium.generic()
                       var sql4 = "INSERT INTO properties(api_base_url,type,url) VALUES" + insert_properties;
                       connection.query(sql4, function (error4, results4, fields) { 
                     
-                        var sql5 = "DELETE FROM maintainers WHERE openapi_url = '" + openapi_url + "'";
+                        var sql5 = "DELETE FROM maintainers WHERE apisjson_url = '" + apisjson_url + "'";
                         connection.query(sql5, function (error5, results5, fields) { 
                   
-                          var sql6 = "INSERT INTO maintainers(openapi_url,FN,name,photo,url) VALUES" + insert_maintainers;
+                          var sql6 = "INSERT INTO maintainers(apisjson_url,FN,name,photo,url) VALUES" + insert_maintainers;
                           connection.query(sql6, function (error6, results6, fields) { 
                             
                             let outcome = {};
@@ -205,7 +216,23 @@ exports.handler = vandium.generic()
                               outcome.results6 = error6;
                             }                             
                             
-                            callback( null, outcome );               
+                            const params = {
+                              Bucket: "kinlane-productions2",
+                              Key: save_apisjson_path 
+                            };
+
+                            const s3upload = function (params) {
+                              return new Promise((resolve, reject) => {
+                                s3.putObject(params, function (err, apisjson) {
+                                    if (err) {
+                                        reject(err)
+                                    } else {
+                                          console.log("Successfully uploaded data to bucket");
+                                          callback( null, outcome );     
+                                    }
+                                });
+                              });
+                          }                                      
                         
                           });   
                           
