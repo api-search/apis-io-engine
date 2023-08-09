@@ -67,7 +67,6 @@ exports.handler = vandium.generic()
 
               if(!error && res.statusCode == 200){
                 
-                // Success - Let's update ands ave
                 const property_content = Buffer.concat(data).toString();
 
                 var outcome = {};
