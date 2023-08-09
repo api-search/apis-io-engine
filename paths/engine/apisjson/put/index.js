@@ -26,14 +26,22 @@ exports.handler = vandium.generic()
       
       if(results && results.length > 0){
         
+        let currentDate = new Date();
+        let startDate = new Date(currentDate.getFullYear(), 0, 1);
+        let days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
+         
+        const weekNumber = Math.ceil(days / 7);
+
         // Pull any new ones.
         var apisjson_url = results[0].url;
         var apisjson_slug = apisjson_url.replace('http://','http-');
+        apisjson_slug = apisjson_url.replace('json','');
+        apisjson_slug = apisjson_url.replace('yaml','');
         apisjson_slug = apisjson_slug.replace('https://','https-');
         apisjson_slug = apisjson_slug.replace(/\//g, '-');
         apisjson_slug = apisjson_slug.replace('.','-');
 
-        var save_apisjson_path = 'apis-io/api/apis-json/' + apisjson_slug + ".json";
+        var save_apisjson_path = 'apis-io/api/apis-json/' + apisjson_slug + "/" + weekNumber + "apis.json";
         
         https.get(apisjson_url, res => {
           
