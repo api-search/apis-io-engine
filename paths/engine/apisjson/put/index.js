@@ -50,7 +50,7 @@ exports.handler = vandium.generic()
         apisjson_slug = apisjson_slug.replace(/\//g, '-');
         apisjson_slug = apisjson_slug.replace('.','-');
 
-        var save_apisjson_path = 'apis-io/api/apis-json/' + apisjson_slug + "/" + weekNumber + "apis.json";
+        var save_apisjson_path = 'apis-io/api/apis-json/' + apisjson_slug + "/" + weekNumber + "/apis.json";
         
         https.get(apisjson_url, res => {
           
