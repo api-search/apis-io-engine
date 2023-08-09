@@ -27,15 +27,56 @@ exports.handler = vandium.generic()
      
     const weekNumber = Math.ceil(days / 7);    
     
-    var sql = "SELECT type,url FROM properties WHERE pulled <> " + weekNumber;
+    var sql = "SELECT type,url FROM properties WHERE pulled <> " + weekNumber + ' LIMIT 1';
     connection.query(sql, function (error, results, fields) { 
       
-      if(!error && response.statusCode == 200){
-
         if(results && results.length > 0){
           
+        // Pull any new ones.
+        var property_type = results[0].type;
+        var property_url = results[0].url;
 
-          callback( null, results );
+        var property_slug = property_url.replace('http://','http-');
+        property_slug = property_slug.replace('.json','');
+        property_slug = property_slug.replace('.yaml','');
+        property_slug = property_slug.replace('https://','https-');
+        property_slug = property_slug.replace(/\//g, '-');
+        property_slug = property_slug.replace('.','-');
+
+        var save_apisjson_path = 'apis-io/api/apis-json/properties/' + property_slug + "/" + weekNumber + "/apis.json";
+
+          https.get(apisjson_url, function (error, res) {
+            
+            let data = [];
+            const headerDate = res.headers && res.headers.date ? res.headers.date : 'no response date';
+            
+            console.log('Status Code:', res.statusCode);
+            console.log('Date in Response header:', headerDate);
+          
+            res.on('data', chunk => {
+              data.push(chunk);
+            });
+          
+            res.on('end', () => {
+              
+              console.log('Response ended: ');
+
+              if(!error && res.statusCode == 200){
+                
+                const property_content = Buffer.concat(data).toString();
+
+                var outcome = {};
+                outcome.status = res.statusCode;
+                outcome.property_content = property_content;
+                outcome.save_apisjson_path = save_apisjson_path;
+
+                callback( null, outcome );
+
+              }
+
+            });
+
+          });
 
         }
         else{
@@ -43,10 +84,6 @@ exports.handler = vandium.generic()
           callback( null, error );
 
         }
-      }
-      else{
-        callback( null, response.statusCode );
-      }
 
     });
 }); 
