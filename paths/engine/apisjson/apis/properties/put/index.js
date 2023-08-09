@@ -1,6 +1,18 @@
-import * as mysql from "mysql";
+const vandium = require('vandium');
+const mysql  = require('mysql');
+const https  = require('https');
+const Ajv = require("ajv")
+const ajv = new Ajv({allErrors: true,strict: false}) // options can be passed, e.g. {allErrors: true}
+const AWS = require("aws-sdk");
 
-export function handler(event, context, callback) {
+const s3 = new AWS.S3({
+  accessKeyId: process.env.key,
+  secretAccessKey: process.env.secret, 
+  Bucket: "kinlane-productions2"
+});
+
+exports.handler = vandium.generic()
+  .handler( (event, context, callback) => {
 
     var connection = mysql.createConnection({
     host     : process.env.host,
@@ -8,26 +20,22 @@ export function handler(event, context, callback) {
     password : process.env.password,
     database : process.env.database
     });
-    
-    var total_properties = Object.keys(event.body).length;
 
-    var sql = 'UPDATE apis SET ';
+    let currentDate = new Date();
+    let startDate = new Date(currentDate.getFullYear(), 0, 1);
+    let days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
+     
+    const weekNumber = Math.ceil(days / 7);    
     
-    var property_count = 1;
-    for (const [key, value] of Object.entries(event.body)) {
-      sql += key + " = '" + value + "'";
-      if(property_count != total_properties){
-        sql += ',';
+    var sql = "SELECT type,url FROM properties WHERE pulled <> " + weekNumber;
+    connection.query(sql, function (error, results, fields) { 
+      
+      if(results && results.length > 0){
+
+        callback( null, results );
+
       }
-      property_count++;
-    }
 
-    sql += " WHERE id = " + connection.escape(event.api_id);
-  
-    connection.query(sql, function (error, results, fields) {
 
-    callback( null );
-
-  });
-  
-};
+    });
+}); 
