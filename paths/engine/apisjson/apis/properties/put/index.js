@@ -45,7 +45,7 @@ exports.handler = vandium.generic()
 
         var save_apisjson_path = 'apis-io/api/apis-json/properties/' + property_slug + "/" + weekNumber + "/apis.json";
         console.log(property_url);
-          https.get(property_url, function (error, res) {
+          https.get(property_url, function (error, res, body) {
             
             let data = [];
             //const headerDate = res.headers && res.headers.date ? res.headers.date : 'no response date';
