@@ -44,14 +44,14 @@ exports.handler = vandium.generic()
         property_slug = property_slug.replace('.','-');
 
         var save_apisjson_path = 'apis-io/api/apis-json/properties/' + property_slug + "/" + weekNumber + "/apis.json";
-
+        console.log(property_url);
           https.get(property_url, function (error, res) {
             
             let data = [];
-            const headerDate = res.headers && res.headers.date ? res.headers.date : 'no response date';
+            //const headerDate = res.headers && res.headers.date ? res.headers.date : 'no response date';
             
             console.log('Status Code:', res.statusCode);
-            console.log('Date in Response header:', headerDate);
+            //console.log('Date in Response header:', headerDate);
           
             res.on('data', chunk => {
               data.push(chunk);
