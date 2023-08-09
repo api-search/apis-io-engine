@@ -253,8 +253,8 @@ exports.handler = vandium.generic()
                                       
                                       console.log("Successfully uploaded data to bucket");
                                       
-                                      outomce.data = data;
-                                      
+                                      outcome.data = data;
+
                                       callback( null, outcome );     
                                 }
                             });                                  
