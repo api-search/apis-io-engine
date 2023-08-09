@@ -289,7 +289,7 @@ exports.handler = vandium.generic()
         
         // Pull one that is old
         var response = {};
-        response['pulling'] = "old ones";            
+        response['pulling'] = "No more new ones, looking for old ones.";            
         callback( null, response );          
         
       }
