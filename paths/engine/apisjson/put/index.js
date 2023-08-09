@@ -28,12 +28,12 @@ exports.handler = vandium.generic()
         
         // Pull any new ones.
         var apisjson_url = results[0].url;
-        var apisjson_slug = apisjson_url.replace('http://','-');
-        apisjson_slug = apisjson_slug.replace('https://','-');
+        var apisjson_slug = apisjson_url.replace('http://','http-');
+        apisjson_slug = apisjson_slug.replace('https://','https-');
         apisjson_slug = apisjson_slug.replace(/\//g, '-');
         apisjson_slug = apisjson_slug.replace('.','-');
 
-        var save_apisjson_path = 'apis-io/api/apis-json/' + apisjson_slug + '/';
+        var save_apisjson_path = 'apis-io/api/apis-json/' + apisjson_slug + ".json";
         
         https.get(apisjson_url, res => {
           
@@ -222,7 +222,17 @@ exports.handler = vandium.generic()
                             };
 
                             console.log(params);
-                            callback( null, outcome );                                   
+
+                            var write_apisjson = JSON.stringify(apisjson);
+
+                            s3.putObject(params, function (err, write_apisjson) {
+                                if (err) {
+                                    reject(err)
+                                } else {
+                                      console.log("Successfully uploaded data to bucket");
+                                      callback( null, outcome );     
+                                }
+                            });                                  
                         
                           });   
                           
