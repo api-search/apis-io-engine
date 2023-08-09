@@ -30,12 +30,23 @@ exports.handler = vandium.generic()
     var sql = "SELECT type,url FROM properties WHERE pulled <> " + weekNumber;
     connection.query(sql, function (error, results, fields) { 
       
-      if(results && results.length > 0){
+      if(!error && response.statusCode == 200){
 
-        callback( null, results );
+        if(results && results.length > 0){
+          
 
+          callback( null, results );
+
+        }
+        else{
+
+          callback( null, error );
+
+        }
       }
-
+      else{
+        callback( null, response.statusCode );
+      }
 
     });
 }); 
