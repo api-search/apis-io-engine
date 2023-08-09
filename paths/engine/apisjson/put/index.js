@@ -5,15 +5,6 @@ const Ajv = require("ajv")
 const ajv = new Ajv({allErrors: true,strict: false}) // options can be passed, e.g. {allErrors: true}
 const AWS = require("aws-sdk");
 
-function covertObjectToBinary(obj) {
-  let output = '',
-      input = JSON.stringify(obj)
-  for (i = 0; i < input.length; i++) {
-      output += input[i].charCodeAt(0).toString(2) + " ";
-  }
-  return output.trimEnd();
-}
-
 const s3 = new AWS.S3({
   accessKeyId: process.env.key,
   secretAccessKey: process.env.secret, 
@@ -29,7 +20,7 @@ exports.handler = vandium.generic()
     password : process.env.password,
     database : process.env.database
     });
-    
+     
     var sql = "SELECT url FROM apisjson WHERE pulled IS NULL LIMIT 1";
     connection.query(sql, function (error, results, fields) { 
       
