@@ -82,7 +82,7 @@ exports.handler = vandium.generic()
                   outcome.sql1 = sql1;
                   connection.query(sql1, function (error1, results1, fields) { 
                     
-                    var sql2 = "INSERT INTO properties(pulled,url,status) VALUES(" + connection.escape(weekNumber) + "," + connection.escape(property_url) + "," + connection.escape(res.statusCode) + ")";
+                    var sql2 = "INSERT INTO properties_pull(pulled,url,status) VALUES(" + connection.escape(weekNumber) + "," + connection.escape(property_url) + "," + connection.escape(res.statusCode) + ")";
                     outcome.sql2 = sql2;
                     connection.query(sql2, function (error2, results2, fields) {     
 
