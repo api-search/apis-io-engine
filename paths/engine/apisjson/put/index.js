@@ -35,8 +35,8 @@ exports.handler = vandium.generic()
         // Pull any new ones.
         var apisjson_url = results[0].url;
         var apisjson_slug = apisjson_url.replace('http://','http-');
-        apisjson_slug = apisjson_url.replace('json','');
-        apisjson_slug = apisjson_url.replace('yaml','');
+        apisjson_slug = apisjson_slug.replace('.json','');
+        apisjson_slug = apisjson_slug.replace('.yaml','');
         apisjson_slug = apisjson_slug.replace('https://','https-');
         apisjson_slug = apisjson_slug.replace(/\//g, '-');
         apisjson_slug = apisjson_slug.replace('.','-');
@@ -224,6 +224,7 @@ exports.handler = vandium.generic()
                               outcome.results6 = error6;
                             }                             
                             
+                            // Write the APIs.json to AWS S3 Bucket
                             const params = {
                               Bucket: "kinlane-productions2",
                               Key: save_apisjson_path 
@@ -231,7 +232,11 @@ exports.handler = vandium.generic()
 
                             console.log(params);
 
+                            console.log(apisjson);
+                            
                             var write_apisjson = JSON.stringify(apisjson);
+
+                            outcome.write_apisjson = write_apisjson;
 
                             s3.putObject(params, function (err, write_apisjson) {
                                 if (err) {
