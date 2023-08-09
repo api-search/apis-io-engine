@@ -67,6 +67,7 @@ exports.handler = vandium.generic()
 
               if(!error && res.statusCode == 200){
                 
+                // Success - Record Run
                 const property_content = Buffer.concat(data).toString();
 
                 var outcome = {};
@@ -96,7 +97,7 @@ exports.handler = vandium.generic()
               }
               else{
 
-                // Problem -- Let's record
+                // Problem -- Record Run
                 var outcome = {};
                 outcome.status = res.statusCode;
                 outcome.property_content = '';
