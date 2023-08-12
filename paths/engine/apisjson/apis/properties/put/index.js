@@ -47,7 +47,7 @@ exports.handler = vandium.generic()
           property_slug = property_slug.replace(/\//g, '-');
           property_slug = property_slug.replace('.','-');
 
-          var save_property_path = 'apis-io/api/apis-json/properties/' + property_slug + "/" + weekNumber + "/apis.json";
+          var save_property_path = 'apis-io/api/apis-json/properties/' + property_slug + "/" + weekNumber + "/property.txt";
 
             https.get(property_url, (res)=>{
               
