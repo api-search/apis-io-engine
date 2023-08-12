@@ -3,8 +3,11 @@ info:
   title: APIs.io Engine API
   description: This is the engine of the API search engine.
   version: V1
+  
 servers:
-- url: https://6lmdrlqfjj.execute-api.us-east-1.amazonaws.com/staging
+
+  - url: https://8wmp1s1pni.execute-api.us-east-1.amazonaws.com/staging
+
 paths:
 
   '/engine/apisjson/apis/properties':

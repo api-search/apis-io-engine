@@ -71,7 +71,7 @@ exports.handler = vandium.generic()
             
             const valid = validate(apisjson)
             if (!valid){
-              var sql = "UPDATE apisjson SET path=" + connection.escape(save_apisjson_path) + ", pulled='" + created + "', valid = 0 WHERE url = " + connection.escape(apisjson_url);
+              var sql = "UPDATE apisjson SET slug=" + connection.escape(apisjson_slug) + ",path=" + connection.escape(save_apisjson_path) + ", pulled='" + created + "', valid = 0 WHERE url = " + connection.escape(apisjson_url);
               connection.query(sql, function (error, results, fields) {               
               callback( null, "Not valid APIs.json." );
               });

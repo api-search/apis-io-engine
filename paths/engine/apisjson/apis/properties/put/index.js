@@ -167,7 +167,7 @@ exports.handler = vandium.generic()
           outcome = {};
           outcome.message = "No more properties to pull.";
 
-          callback( null, error );
+          callback( null, outcome );
 
         }
 
