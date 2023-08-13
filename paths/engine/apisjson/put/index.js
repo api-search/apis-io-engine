@@ -70,13 +70,15 @@ exports.handler = vandium.generic()
             let validate = ajv.compile(schema)
             
             const valid = validate(apisjson)
-            if (!valid){
-              var sql = "UPDATE apisjson SET slug=" + connection.escape(apisjson_slug) + ",path=" + connection.escape(save_apisjson_path) + ", pulled='" + created + "', valid = 0 WHERE url = " + connection.escape(apisjson_url);
-              connection.query(sql, function (error, results, fields) {               
-              callback( null, "Not valid APIs.json." );
-              });
-            } 
-            else{
+
+            // override validation for now
+            //if (!valid){
+            //  var sql = "UPDATE apisjson SET slug=" + connection.escape(apisjson_slug) + ",path=" + connection.escape(save_apisjson_path) + ", pulled='" + created + "', valid = 0 WHERE url = " + connection.escape(apisjson_url);
+            //  connection.query(sql, function (error, results, fields) {               
+            //  callback( null, "Not valid APIs.json." );
+            //  });
+            //} 
+            //else{
               
               // Let's Process
               // What do we do with invalid??
@@ -267,7 +269,7 @@ exports.handler = vandium.generic()
                 
               });              
               
-            }
+           // }
             
           });
         }).on('error', err => {
