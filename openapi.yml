@@ -2,8 +2,8 @@ openapi: 3.0.0
 
 info:
 
-  title: 'APIs.io API'
-  description: 'This is the public version of the APis.io API search engine, providing search, submission, and engine capabilities.'
+  title: 'APIs.io Engine API'
+  description: 'This is the API that regularly pulls the APIs.json, OpenAPI, and other properties.'
   version: V1
 
   contact:
