@@ -20,17 +20,17 @@ exports.handler = vandium.generic()
     password : process.env.password,
     database : process.env.database
     });
+
+    let currentDate = new Date();
+    let startDate = new Date(currentDate.getFullYear(), 0, 1);
+    let days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
      
-    var sql = "SELECT url FROM apisjson WHERE pulled IS NULL LIMIT 1";
+    const weekNumber = Math.ceil(days / 7);    
+     
+    var sql = "SELECT url FROM apisjson WHERE pulled <> " + weekNumber + ' LIMIT 1";
     connection.query(sql, function (error, results, fields) { 
       
       if(results && results.length > 0){
-        
-        let currentDate = new Date();
-        let startDate = new Date(currentDate.getFullYear(), 0, 1);
-        let days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
-         
-        const weekNumber = Math.ceil(days / 7);
 
         // Pull any new ones.
         var apisjson_url = results[0].url;
