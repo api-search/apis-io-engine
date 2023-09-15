@@ -86,7 +86,7 @@ exports.handler = vandium.generic()
               let apisjson_description = apisjson.description;
               let apisjson_image = apisjson.image;
                     
-              var sql = "UPDATE apisjson SET  slug=" + connection.escape(apisjson_slug) + ",path=" + connection.escape(save_apisjson_path) + ", valid=1, name = " + connection.escape(apisjson_name) + ",description = " + connection.escape(apisjson_description) + ",image = " + connection.escape(apisjson_image) + ",pulled='" + created + "' WHERE url = " + connection.escape(apisjson_url);
+              var sql = "UPDATE apisjson SET  slug=" + connection.escape(apisjson_slug) + ",path=" + connection.escape(save_apisjson_path) + ", valid=1, name = " + connection.escape(apisjson_name) + ",description = " + connection.escape(apisjson_description) + ",image = " + connection.escape(apisjson_image) + ",pulled='" + weekNumber + "' WHERE url = " + connection.escape(apisjson_url);
               connection.query(sql, function (error, results, fields) {  
                 
                 let insert_apis = '';
