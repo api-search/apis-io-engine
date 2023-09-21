@@ -249,7 +249,7 @@ exports.handler = vandium.generic()
                                       outcome.data = data;
 
                                       outcome = {};
-                                      outcome.message = "Successfully processed the" + apisjson_name + " APIs.json file."
+                                      outcome.message = "Successfully processed the " + apisjson_name + " APIs.json file."
 
                                       callback( null, outcome );     
                                 }
