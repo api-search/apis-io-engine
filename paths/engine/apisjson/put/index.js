@@ -34,14 +34,21 @@ exports.handler = vandium.generic()
 
         // Pull any new ones.
         var apisjson_url = results[0].url;
-        var apisjson_slug = apisjson_url.replace('http://','http-');
-        apisjson_slug = apisjson_slug.replace('.json','');
-        apisjson_slug = apisjson_slug.replace('.yaml','');
-        apisjson_slug = apisjson_slug.replace('https://','https-');
-        apisjson_slug = apisjson_slug.replace(/\//g, '-');
-        apisjson_slug = apisjson_slug.replace('.','-');
 
-        var save_apisjson_path = 'apis-io/api/apis-json/' + apisjson_slug + "/" + weekNumber + "/apis.json";
+        if(apisjson_url.includes("raw.githubusercontent.com") == ''){
+          // This is just for all of the historic ones I have that are unofficial.
+          domain_slug = apisjson_url.replace('https://raw.githubusercontent.com/api-search/historic/main/','');
+          domain_slug = domain_slug.replace('/apis.json','');
+        }
+        else{                 
+          domain = new URL(apisjson_url);
+          domain_slug = domain.hostname;
+          domain_slug = domain_slug.replace(/\./g,'');
+          domain_slug = domain_slug.replace(/\-/g,'');
+          domain_slug = domain_slug.replace(/\&/g,'');
+          }
+
+        var save_apisjson_path = 'apis-io/api/apis-json/' + domain_slug + "/" + weekNumber + "/apis.json";
         
         https.get(apisjson_url, res => {
           
