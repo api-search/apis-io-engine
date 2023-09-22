@@ -47,11 +47,11 @@ exports.handler = vandium.generic()
           domain_slug = domain_slug.replace('https://','');
           domain_slug = domain_slug.replace('http://','');
           domain_slug = domain_slug.replace('www.','');
-          domain_slug = domain_slug.replace('/','');
-          domain_slug = domain_slug.replace('/','');
-          domain_slug = domain_slug.replace(/\./g,'');
-          domain_slug = domain_slug.replace(/\-/g,'');
+          domain_slug = domain_slug.replace('/','-');
+          domain_slug = domain_slug.replace('/','-');
+          domain_slug = domain_slug.replace(/\./g,'-');
           domain_slug = domain_slug.replace(/\&/g,'');
+          domain_slug = domain_slug.replace(/\?/g,'');
           }
 
         var save_apisjson_path = 'apis-io/api/apis-json/' + domain_slug + "/" + weekNumber + "/apis.json";
