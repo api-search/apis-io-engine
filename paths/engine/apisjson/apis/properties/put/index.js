@@ -111,7 +111,7 @@ exports.handler = vandium.generic()
                                   outcome.data = data;
 
                                   outcome = {};
-                                  outcome.message = "Successfully processed the API property."
+                                  outcome.message = "Successfully processed the " + property_type + " - " + property_url + ".";
 
                                   callback( null, outcome );     
                             }
