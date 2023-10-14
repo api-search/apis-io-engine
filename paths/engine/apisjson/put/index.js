@@ -300,9 +300,9 @@ exports.handler = vandium.generic()
       else{
         
         // Pull one that is old
-        var response = {};
-        response['pulling'] = "No more new ones, looking for old ones.";            
-        callback( null, response );          
+        outcome = {};
+        outcome.message =  "No more new ones, looking for old ones.";            
+        callback( null, outcome );          
         
       }
       
