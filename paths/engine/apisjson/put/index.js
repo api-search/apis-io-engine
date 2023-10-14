@@ -138,32 +138,32 @@ exports.handler = vandium.generic()
                   insert_maintainers += "(" + connection.escape(apisjson_url) + ",";
                   
                   // FN
-                  if(apisjson.maintainers[j].FN){
-                    insert_maintainers += connection.escape(apisjson.maintainers[j].FN) + ",";
+                  if(apisjson.maintainers[i].FN){
+                    insert_maintainers += connection.escape(apisjson.maintainers[i].FN) + ",";
                   }
                   else{
                     insert_maintainers += "'',";
                   }
                   
                   // organizationName
-                  if(apisjson.maintainers[j].organizationName){
-                    insert_maintainers += connection.escape(apisjson.maintainers[j].organizationName) + ",";
+                  if(apisjson.maintainers[i].organizationName){
+                    insert_maintainers += connection.escape(apisjson.maintainers[i].organizationName) + ",";
                   }
                   else{
                     insert_maintainers += "'',";
                   }
                   
                   // photo
-                  if(apisjson.maintainers[j].photo){
-                    insert_maintainers += connection.escape(apisjson.maintainers[j].photo) + ",";
+                  if(apisjson.maintainers[i].photo){
+                    insert_maintainers += connection.escape(apisjson.maintainers[i].photo) + ",";
                   }
                   else{
                     insert_maintainers += "'',";
                   } 
                   
                   // url
-                  if(apisjson.maintainers[j].url){
-                    insert_maintainers += connection.escape(apisjson.maintainers[j].url) + "),";
+                  if(apisjson.maintainers[i].url){
+                    insert_maintainers += connection.escape(apisjson.maintainers[i].url) + "),";
                   }
                   else{
                     insert_maintainers += "''),";
