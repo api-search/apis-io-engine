@@ -111,7 +111,7 @@ exports.handler = vandium.generic()
                                   outcome.data = data;
 
                                   outcome = {};
-                                  outcome.message = "Successfully processed the " + property_type + " - " + property_url + ".";
+                                  outcome.message = "200 - " + property_type + " - " + property_url + ".";
 
                                   callback( null, outcome );     
                             }
@@ -146,7 +146,7 @@ exports.handler = vandium.generic()
                       connection.query(sql2, function (error2, results2, fields) {     
 
                         outcome = {};
-                        outcome.message = "Status - " + res.statusCode;
+                        outcome.message = res.statusCode + " - " + property_type + " - " + property_url + ".";
 
                         callback( null, outcome );
 
