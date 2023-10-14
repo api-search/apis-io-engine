@@ -56,7 +56,33 @@ jobs:
         env:
           CI: true
 
-      # Dynamic below here
+      # Update Below Here
+      - name: /engine/apisjson put lambda deploy zip
+        uses: api-search/engine-api@main
+        with:
+          args: zip -qq -r m-s-apis-io-engineapisjson-pu.zip paths/engine/apisjson/put/index.js node_modules
+      - name: engine-api get lambda deploy
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_region: us-east-1
+          function_name: m-s-apis-io-engineapisjson-pu
+          zip_file: m-s-apis-io-engineapisjson-pu.zip
+
+      - name: /engine/apisjson/overlay put lambda deploy zip
+        uses: api-search/engine-api@main
+        with:
+          args: zip -qq -r m-s-apis-io-engineapisjsonoverlay-pu.zip paths/engine/apisjson/overlay/put/index.js node_modules
+      - name: engine-api get lambda deploy
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_region: us-east-1
+          function_name: m-s-apis-io-engineapisjsonoverlay-pu
+          zip_file: m-s-apis-io-engineapisjsonoverlay-pu.zip  
+
       - name: /engine/apisjson/apis/properties put lambda deploy zip
         uses: api-search/engine-api@main
         with:
@@ -70,15 +96,15 @@ jobs:
           function_name: m-s-apis-io-engineapisjsonapisproperties-pu
           zip_file: m-s-apis-io-engineapisjsonapisproperties-pu.zip
         
-      - name: /engine/apisjson put lambda deploy zip
+      - name: /engine/apisjson/apis/overlays put lambda deploy zip
         uses: api-search/engine-api@main
         with:
-          args: zip -qq -r m-s-apis-io-engineapisjson-pu.zip paths/engine/apisjson/put/index.js node_modules
+          args: zip -qq -r m-s-apis-io-engineapisjsonapisoverlays-pu.zip paths/engine/apisjson/apis/overlays/put/index.js node_modules
       - name: engine-api get lambda deploy
         uses: appleboy/lambda-action@master
         with:
           aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws_region: us-east-1
-          function_name: m-s-apis-io-engineapisjson-pu
-          zip_file: m-s-apis-io-engineapisjson-pu.zip
+          function_name: m-s-apis-io-engineapisjsonapisoverlays-pu
+          zip_file: m-s-apis-io-engineapisjsonapisoverlays-pu.zip                  

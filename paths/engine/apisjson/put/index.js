@@ -100,20 +100,18 @@ exports.handler = vandium.generic()
               let apisjson_description = apisjson.description;
               let apisjson_image = apisjson.image;
                     
-              var sql = "UPDATE apisjson SET  slug=" + connection.escape(domain_slug) + ",path=" + connection.escape(save_apisjson_path) + ", valid=1, name = " + connection.escape(apisjson_name) + ",description = " + connection.escape(apisjson_description) + ",image = " + connection.escape(apisjson_image) + ",pulled=" + weekNumber + " WHERE url = " + connection.escape(apisjson_url);
+              var sql = "UPDATE apisjson SET slug=" + connection.escape(domain_slug) + ",path=" + connection.escape(save_apisjson_path) + ", valid=1, name = " + connection.escape(apisjson_name) + ",description = " + connection.escape(apisjson_description) + ",image = " + connection.escape(apisjson_image) + ",pulled=" + weekNumber + ",tags = " + connection.escape(apisjson.tags.join(',')) + " WHERE url = " + connection.escape(apisjson_url);
               connection.query(sql, function (error, results, fields) {  
                 
                 let insert_apis = '';
                 let insert_properties = '';
+                let insert_api_properties = '';
                 let insert_maintainers = '';
                 
                 let api_base_urls = '';
                 
                 for (let i = 0; i < apisjson.apis.length; i++) {
-                  
-                  insert_properties = '';
-                  insert_maintainers = '';                  
-                    
+        
                   let api_name = apisjson.apis[i].name;
                   api_name = api_name.replace("'","");
                   
@@ -122,13 +120,21 @@ exports.handler = vandium.generic()
                   
                   // properties
                   for (let j = 0; j < apisjson.apis[i].properties.length; j++) {
-                    insert_properties += "(" + connection.escape(apisjson.apis[i].baseURL) + "," + connection.escape( apisjson.apis[i].properties[j].type) + "," + connection.escape(apisjson.apis[i].properties[j].url.replace('http:','https:')) + "),";
+                    insert_api_properties += "(" + connection.escape(apisjson.apis[i].baseURL) + ",0," + connection.escape( apisjson.apis[i].properties[j].type) + "," + connection.escape(apisjson.apis[i].properties[j].url.replace('http:','https:')) + "),";
                     api_base_urls += connection.escape(apisjson.apis[i].baseURL) + ",";
-                  }
+                  }                                      
                   
-                  // maintainers
-                  let j = 0;
-                    
+                }
+
+                if(apisjson.common){
+                  for (let i = 0; i < apisjson.common.length; i++) {        
+                      insert_api_properties += "(" + connection.escape(apisjson_url) + ",1," + connection.escape( apisjson.common[i].type) + "," + connection.escape(apisjson.common[i].url.replace('http:','https:')) + "),";
+                    }                                        
+                }            
+
+                // maintainers
+                for (let i = 0; i < apisjson.maintainers.length; i++) {
+                  
                   insert_maintainers += "(" + connection.escape(apisjson_url) + ",";
                   
                   // FN
@@ -161,9 +167,8 @@ exports.handler = vandium.generic()
                   }
                   else{
                     insert_maintainers += "''),";
-                  }                       
-                  
-                }
+                  }  
+                }               
                 
                 // Trimit
                 insert_apis = insert_apis.substring(0, insert_apis.length - 1);

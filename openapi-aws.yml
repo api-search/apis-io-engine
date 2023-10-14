@@ -10,30 +10,6 @@ servers:
 
 paths:
 
-  '/engine/apisjson/apis/properties':
-    put:
-      operationId: processesAPIProperties
-      responses:
-        200:
-          description: 200 response
-          headers:
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Object'
-      x-amazon-apigateway-integration:
-        httpMethod: POST
-        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:007596076917:function:m-s-apis-io-engineapisproperties-pu/invocations
-        responses:
-          default:
-            statusCode: "200"
-        passthroughBehavior: when_no_match
-        contentHandling: CONVERT_TO_TEXT
-        type: aws
-
   '/engine/apisjson':
     put:
       operationId: processesAPIsJSON
@@ -58,6 +34,88 @@ paths:
         contentHandling: CONVERT_TO_TEXT
         type: aws
 
+  '/engine/apisjson/overlay':
+
+    put:
+      operationId: updateAPIsJSONOverlay
+      summary: 'Update APIs.json Overlay'
+      description: 'Updates the name, description, and image path for an APIs.json, producing an overlay.'
+      parameters:
+      - name: url
+        in: query
+        required: true      
+      tags:
+        - Engine
+
+      responses:
+        "200":
+          description: Success
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Object"    
+      x-amazon-apigateway-integration:
+        httpMethod: POST
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:007596076917:function:m-s-engine-apisjsonoverlay-pu/invocations
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: when_no_match
+        contentHandling: CONVERT_TO_TEXT
+        type: aws                                                
+
+  '/engine/apisjson/apis/properties':
+    put:
+      operationId: processesAPIProperties
+      responses:
+        200:
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+      x-amazon-apigateway-integration:
+        httpMethod: POST
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:007596076917:function:m-s-apis-io-engineapisproperties-pu/invocations
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: when_no_match
+        contentHandling: CONVERT_TO_TEXT
+        type: aws 
+
+  '/engine/apisjson/apis/overlay':
+    put:
+      operationId: updateAPIOverlay
+      responses:
+        200:
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+      x-amazon-apigateway-integration:
+        httpMethod: POST
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:007596076917:function:m-s-apis-io-engineapisoverlay-pu/invocations
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: when_no_match
+        contentHandling: CONVERT_TO_TEXT
+        type: aws                           
+
 components:
   schemas:
     Object:
@@ -70,3 +128,4 @@ components:
           type: string
         description:
           type: string
+

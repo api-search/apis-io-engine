@@ -43,6 +43,31 @@ paths:
               schema:
                 $ref: "#/components/schemas/Latest"
 
+  '/engine/apisjson/overlay':
+
+    put:
+      operationId: updateAPIsJSONOverlay
+      summary: 'Update APIs.json Overlay'
+      description: 'Updates the name, description, and image path for an APIs.json, producing an overlay.'
+      parameters:
+      - name: url
+        in: query
+        required: true      
+      tags:
+        - Engine
+
+      responses:
+        "200":
+          description: Success
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Overlay"                                                                
+
   '/engine/apisjson/apis/properties':
 
     put:
@@ -62,7 +87,49 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/LatestProperties"     
+                $ref: "#/components/schemas/LatestProperties"   
+                
+  '/engine/apisjson/apis/overlay':
+
+    put:
+      operationId: processesLatestAPIOverlay
+      summary: 'Process Latest APIs Overlay'
+      description: 'Updates the overlay for an API.'
+      tags:
+        - Engine 
+
+      responses:
+        "200":
+          description: Success
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Overlay"  
+
+  '/engine/apisjson/apis/tags':
+
+    put:
+      operationId: processesLatestAPITags
+      summary: 'Process Latest APIs Tags'
+      description: 'Updates the tags for an API.'
+      tags:
+        - Engine 
+
+      responses:
+        "200":
+          description: Success
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LatestProperties"                                    
 
 components:
 
@@ -438,6 +505,20 @@ components:
         run:
           type: string   
 
+    LatestTags:
+      description: Results of latest pull.
+      required:
+        - name
+        - description
+        - run
+      properties:
+        status:
+          type: string   
+        description:
+          type: string  
+        run:
+          type: string          
+
     UpdateTags:
       description: Results of latest pull.
       required:
@@ -605,3 +686,17 @@ components:
     PathExpression:
       type: string
       pattern: "^\\$"
+
+    Overlay:
+      description: Updates the overlay for an APIs.json
+      required:
+        - name
+        - description
+        - image
+      properties:
+        name:
+          type: string   
+        description:
+          type: string  
+        image:
+          type: string        
