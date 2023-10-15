@@ -83,6 +83,19 @@ jobs:
           function_name: m-s-apis-io-engineapisjsonoverlay-pu
           zip_file: m-s-apis-io-engineapisjsonoverlay-pu.zip  
 
+      - name: /engine/apisjson/overlay get lambda deploy zip
+        uses: api-search/engine-api@main
+        with:
+          args: zip -qq -r m-s-apis-io-engineapisjsonoverlay-g.zip paths/engine/apisjson/overlay/get/index.js node_modules
+      - name: engine-api get lambda deploy
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_region: us-east-1
+          function_name: m-s-apis-io-engineapisjsonoverlay-g
+          zip_file: m-s-apis-io-engineapisjsonoverlay-g.zip        
+
       - name: /engine/apisjson/apis/properties put lambda deploy zip
         uses: api-search/engine-api@main
         with:
@@ -108,3 +121,16 @@ jobs:
           aws_region: us-east-1
           function_name: m-s-apis-io-engineapisjsonapisoverlays-pu
           zip_file: m-s-apis-io-engineapisjsonapisoverlays-pu.zip                  
+
+      - name: /engine/apisjson/apis/overlays get lambda deploy zip
+        uses: api-search/engine-api@main
+        with:
+          args: zip -qq -r m-s-apis-io-engineapisjsonapisoverlays-g.zip paths/engine/apisjson/apis/overlays/get/index.js node_modules
+      - name: engine-api get lambda deploy
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_region: us-east-1
+          function_name: m-s-apis-io-engineapisjsonapisoverlays-g
+          zip_file: m-s-apis-io-engineapisjsonapisoverlays-g.zip              

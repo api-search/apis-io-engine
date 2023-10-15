@@ -45,14 +45,29 @@ paths:
 
   '/engine/apisjson/overlay':
 
+    get:
+      operationId: getAPIsJSONOverlay
+      summary: 'Get APIs.json Overlay'
+      description: 'Gets the name, description, and image path for an APIs.json, to produce an overlay.'   
+      tags:
+        - Engine
+
+      responses:
+        "200":
+          description: Success
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Overlay"       
+
     put:
       operationId: updateAPIsJSONOverlay
       summary: 'Update APIs.json Overlay'
-      description: 'Updates the name, description, and image path for an APIs.json, producing an overlay.'
-      parameters:
-      - name: url
-        in: query
-        required: true      
+      description: 'Updates the name, description, and image path for an APIs.json, producing an overlay.'   
       tags:
         - Engine
 
@@ -90,6 +105,25 @@ paths:
                 $ref: "#/components/schemas/LatestProperties"   
                 
   '/engine/apisjson/apis/overlay':
+
+    get:
+      operationId: getLatestAPIOverlay
+      summary: 'Get APIs Overlay'
+      description: 'Gets the overlay for an API.'
+      tags:
+        - Engine 
+
+      responses:
+        "200":
+          description: Success
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Overlay"  
 
     put:
       operationId: processesLatestAPIOverlay
