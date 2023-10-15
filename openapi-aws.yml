@@ -23,15 +23,17 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Object"
+      security:
+      - api_key: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:007596076917:function:m-s-engine-apisjson-pu/invocations"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:007596076917:function:m-s-apis-io-engineapisjson-pu/invocations"
         responses:
           default:
             statusCode: "200"
             responseParameters:
               method.response.header.Access-Control-Allow-Origin: "'*'"
-        passthroughBehavior: "when_no_match"
+        passthroughBehavior: "when_no_templates"
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws"
     options:
@@ -62,6 +64,59 @@ paths:
         passthroughBehavior: "when_no_match"
         type: "mock"
   /engine/apisjson/apis/overlay:
+    get:
+      operationId: "updateAPIOverlay"
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Object"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:007596076917:function:m-s-apis-io-engineapisoverlay-g/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'OPTIONS,PUT'"
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        passthroughBehavior: "when_no_match"
+        type: "mock"  
     put:
       operationId: "updateAPIOverlay"
       responses:
@@ -75,6 +130,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Object"
+      security:
+      - api_key: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
         uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:007596076917:function:m-s-apis-io-engineapisoverlay-pu/invocations"
@@ -83,7 +140,7 @@ paths:
             statusCode: "200"
             responseParameters:
               method.response.header.Access-Control-Allow-Origin: "'*'"
-        passthroughBehavior: "when_no_match"
+        passthroughBehavior: "when_no_templates"
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws"
     options:
@@ -127,6 +184,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Object"
+      security:
+      - api_key: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
         uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:007596076917:function:m-s-apis-io-engineapisproperties-pu/invocations"
@@ -135,7 +194,7 @@ paths:
             statusCode: "200"
             responseParameters:
               method.response.header.Access-Control-Allow-Origin: "'*'"
-        passthroughBehavior: "when_no_match"
+        passthroughBehavior: "when_no_templates"
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws"
     options:
@@ -166,14 +225,8 @@ paths:
         passthroughBehavior: "when_no_match"
         type: "mock"
   /engine/apisjson/overlay:
-    put:
+    get:
       operationId: "updateAPIsJSONOverlay"
-      parameters:
-      - name: "url"
-        in: "query"
-        required: true
-        schema:
-          type: "string"
       responses:
         "200":
           description: "200 response"
@@ -185,6 +238,59 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Object"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:007596076917:function:m-s-engine-apisjsonoverlay-g/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'OPTIONS,PUT'"
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        type: "mock"  
+    put:
+      operationId: "updateAPIsJSONOverlay"
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Object"
+      security:
+      - api_key: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
         uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:007596076917:function:m-s-engine-apisjsonoverlay-pu/invocations"
@@ -193,7 +299,7 @@ paths:
             statusCode: "200"
             responseParameters:
               method.response.header.Access-Control-Allow-Origin: "'*'"
-        passthroughBehavior: "when_no_match"
+        passthroughBehavior: "when_no_templates"
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws"
     options:
@@ -233,3 +339,8 @@ components:
           type: "string"
         description:
           type: "string"
+  securitySchemes:
+    api_key:
+      type: "apiKey"
+      name: "x-api-key"
+      in: "header"

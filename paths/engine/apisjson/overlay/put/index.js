@@ -1,3 +1,4 @@
+const vandium = require('vandium');
 const mysql  = require('mysql');
 
 exports.handler = vandium.generic()
