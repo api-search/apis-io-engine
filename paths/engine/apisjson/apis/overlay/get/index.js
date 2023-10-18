@@ -11,7 +11,7 @@ exports.handler = vandium.generic()
     database : process.env.database
     });
 
-    var sql = "SELECT name,slug,description,image,humanURL,apisjson_url FROM apis ORDER BY name";
+    var sql = "SELECT a.name,a.slug,a.description,a.image,a.humanURL,ao.name AS name2,ao.slug AS slug2,ao.description AS description2,ao.image AS image2  FROM apis a LEFT JOIN apis_overlay ao ON a.humanURL = ao.humanURL ORDER BY name";
 
     connection.query(sql, function (error, results, fields) {                                
       callback( null, results );     

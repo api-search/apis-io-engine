@@ -11,35 +11,59 @@ exports.handler = vandium.generic()
     database : process.env.database
     });
 
-    if(event.humanUrl != ''){
+    if(event.humanURL != ''){
 
-      let api_humanUrl = event.humanUrl;
-      let api_name = event.name;
-      let api_slug = event.slug;
-      let api_description = event.description;
-      let api_image = event.image;
+      let humanURL = event.humanURL;
+      let apisjson_name = event.name;
+      let apisjson_slug = event.slug;
+      let apisjson_description = event.description;
+      let apisjson_image = event.image;
             
-      var sql = "UPDATE apis SET";
-
-      sql += "name2=" + connection.escape(api_name);
-      sql += ",slug=" + connection.escape(api_slug);
-      sql += ",description=" + connection.escape(api_description);
-      sql += ",image=" + connection.escape(api_image);
-      sql += " WHERE url = " + connection.escape(api_humanUrl);
-
+      var sql = "SELECT * FROM apis_overlay";
+      sql += " WHERE humanURL = " + connection.escape(humanURL);
       connection.query(sql, function (error, results, fields) {                
                 
-        outcome = {};
-        outcome.message = "Updated the overlay for the " + api_name + " APIs."
+        if(results.length == 0){
 
-        callback( null, outcome );     
+          var sql = "INSERT INTO apis_overlay(name,slug,description,image,humanURL)";
+          sql += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(humanURL) + ")";
+          connection.query(sql, function (error, results, fields) {                                  
+    
+            outcome = {};
+            outcome.message = "Added the overlay for the " + apisjson_slug + " APIs.json file."
+    
+            callback( null, outcome );     
+    
+          });  
+
+        }
+        else{
+
+          var sql = "UPDATE apis_overlay SET ";
+
+          sql += "name=" + connection.escape(apisjson_name);
+          sql += ",slug=" + connection.escape(apisjson_slug);
+          sql += ",description=" + connection.escape(apisjson_description);
+          sql += ",image=" + connection.escape(apisjson_image);
+          sql += " WHERE humanURL = " + connection.escape(humanURL);
+    
+          connection.query(sql, function (error, results, fields) {                
+                    
+            outcome = {};
+            outcome.message = "Updated the overlay for the " + humanURL + " APIs.json file."
+    
+            callback( null, outcome );     
+    
+          }); 
+
+        }
 
       });   
     }                               
     else{
       
       var response = {};
-      response['pulling'] = "That did not seem to be an Human URL.";            
+      response['pulling'] = "That did not seem to be an APIs.json URL.";            
       callback( null, response );          
       
     }      
