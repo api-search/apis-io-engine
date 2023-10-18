@@ -39,7 +39,7 @@ exports.handler = vandium.generic()
         }
         else{
 
-          var sql = "UPDATE apisjson_overlay SET";
+          var sql = "UPDATE apisjson_overlay SET ";
 
           sql += "name=" + connection.escape(apisjson_name);
           sql += ",slug=" + connection.escape(apisjson_slug);
@@ -52,7 +52,7 @@ exports.handler = vandium.generic()
             outcome = {};
             outcome.message = "Updated the overlay for the " + apisjson_url + " APIs.json file."
     
-            callback( null, sql );     
+            callback( null, outcome );     
     
           }); 
 
