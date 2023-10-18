@@ -52,7 +52,7 @@ exports.handler = vandium.generic()
             outcome = {};
             outcome.message = "Updated the overlay for the " + apisjson_url + " APIs.json file."
     
-            callback( null, outcome );     
+            callback( null, sql );     
     
           }); 
 
