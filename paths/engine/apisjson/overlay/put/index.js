@@ -19,20 +19,44 @@ exports.handler = vandium.generic()
       let apisjson_description = event.description;
       let apisjson_image = event.image;
             
-      var sql = "UPDATE apisjson SET";
-
-      sql += "name2=" + connection.escape(apisjson_name);
-      sql += ",slug=" + connection.escape(apisjson_slug);
-      sql += ",description=" + connection.escape(apisjson_description);
-      sql += ",image=" + connection.escape(apisjson_image);
-      sql += " WHERE url = " + connection.escape(apisjson_url);
-
+      var sql = "SELECT * FROM apisjson_overlay";
+      sql += " WHERE apisjson_url = " + connection.escape(apisjson_url);
       connection.query(sql, function (error, results, fields) {                
                 
-        outcome = {};
-        outcome.message = "Updated the overlay for the " + apisjson_name + " APIs.json file."
+        if(results.length == 0){
 
-        callback( null, outcome );     
+          var sql = "INSERT INTO apisjson_overlay(name,slug,description,image,apisjson_url)";
+          sql += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(apisjson_url) + ")";
+          connection.query(sql, function (error, results, fields) {                                  
+    
+            outcome = {};
+            outcome.message = "Added the overlay for the " + apisjson_slug + " APIs.json file."
+    
+            callback( null, outcome );     
+    
+          });  
+
+        }
+        else{
+
+          var sql = "UPDATE apisjson_overlay SET";
+
+          sql += "name=" + connection.escape(apisjson_name);
+          sql += ",slug=" + connection.escape(apisjson_slug);
+          sql += ",description=" + connection.escape(apisjson_description);
+          sql += ",image=" + connection.escape(apisjson_image);
+          sql += " WHERE apisjson_url = " + connection.escape(apisjson_url);
+    
+          connection.query(sql, function (error, results, fields) {                
+                    
+            outcome = {};
+            outcome.message = "Updated the overlay for the " + apisjson_url + " APIs.json file."
+    
+            callback( null, outcome );     
+    
+          }); 
+
+        }
 
       });   
     }                               
