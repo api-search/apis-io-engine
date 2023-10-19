@@ -25,26 +25,32 @@ exports.handler = vandium.generic()
                 
         if(!results){
 
-          var sql = "INSERT INTO apis_overlay(name,slug,description,image,humanURL)";
-          sql += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(humanURL) + ")";
-          connection.query(sql, function (error, results, fields) {                                  
+          var sql2 = "INSERT INTO apis_overlay(name,slug,description,image,humanURL)";
+          sql2 += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(humanURL) + ")";
+          connection.query(sql2, function (error, results, fields) {                                  
     
             outcome = {};
-            outcome.message = "3) Added the overlay for the " + apisjson_slug + " APIs.json file."
+            outcome.message = "3) Added the overlay for the " + apisjson_slug + " APIs.json file.";
+            outcome.sql = sql2;
+            outcome.error = error;
+            outcome.results = results;
     
-            callback( null, error );     
+            callback( null, outcome );     
     
           });  
 
         }
         else if(results.length == 0){
 
-          var sql = "INSERT INTO apis_overlay(name,slug,description,image,humanURL)";
-          sql += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(humanURL) + ")";
-          connection.query(sql, function (error, results, fields) {                                  
+          var sql3 = "INSERT INTO apis_overlay(name,slug,description,image,humanURL)";
+          sql3 += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(humanURL) + ")";
+          connection.query(sql3, function (error, results, fields) {                                  
     
             outcome = {};
-            outcome.message = "2) Added the overlay for the " + apisjson_slug + " APIs.json file."
+            outcome.message = "2) Added the overlay for the " + apisjson_slug + " APIs.json file.";
+            outcome.sql = sql3;
+            outcome.error = error;
+            outcome.results = results;            
     
             callback( null, error );     
     
@@ -53,18 +59,19 @@ exports.handler = vandium.generic()
         }        
         else{
 
-          var sql = "UPDATE apis_overlay SET ";
+          var sql4 = "UPDATE apis_overlay SET ";
 
-          sql += "name=" + connection.escape(apisjson_name);
-          sql += ",slug=" + connection.escape(apisjson_slug);
-          sql += ",description=" + connection.escape(apisjson_description);
-          sql += ",image=" + connection.escape(apisjson_image);
-          sql += " WHERE humanURL = " + connection.escape(humanURL);
+          sql4 += "name=" + connection.escape(apisjson_name);
+          sql4 += ",slug=" + connection.escape(apisjson_slug);
+          sql4 += ",description=" + connection.escape(apisjson_description);
+          sql4 += ",image=" + connection.escape(apisjson_image);
+          sql4 += " WHERE humanURL = " + connection.escape(humanURL);
     
-          connection.query(sql, function (error, results, fields) {                
+          connection.query(sql4, function (error, results, fields) {                
                     
             outcome = {};
-            outcome.message = "Updated the overlay for the " + humanURL + " APIs.json file."
+            outcome.message = "Updated the overlay for the " + humanURL + " APIs.json file.";
+            outcome.sql = sql4;
     
             callback( null, outcome );     
     
