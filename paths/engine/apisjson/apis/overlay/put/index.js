@@ -23,7 +23,7 @@ exports.handler = vandium.generic()
       sql += " WHERE humanURL = " + connection.escape(humanURL);
       connection.query(sql, function (error, results, fields) {                
                 
-        if(!results && results.length == 0){
+        if(!results){
 
           var sql = "INSERT INTO apis_overlay(name,slug,description,image,humanURL)";
           sql += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(humanURL) + ")";
@@ -37,6 +37,20 @@ exports.handler = vandium.generic()
           });  
 
         }
+        else if(results.length == 0){
+
+          var sql = "INSERT INTO apis_overlay(name,slug,description,image,humanURL)";
+          sql += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(humanURL) + ")";
+          connection.query(sql, function (error, results, fields) {                                  
+    
+            outcome = {};
+            outcome.message = "Added the overlay for the " + apisjson_slug + " APIs.json file."
+    
+            callback( null, outcome );     
+    
+          });  
+
+        }        
         else{
 
           var sql = "UPDATE apis_overlay SET ";
