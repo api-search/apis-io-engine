@@ -30,9 +30,9 @@ exports.handler = vandium.generic()
           connection.query(sql, function (error, results, fields) {                                  
     
             outcome = {};
-            outcome.message = "Added the overlay for the " + apisjson_slug + " APIs.json file."
+            outcome.message = "3) Added the overlay for the " + apisjson_slug + " APIs.json file."
     
-            callback( null, outcome );     
+            callback( null, sql );     
     
           });  
 
@@ -44,9 +44,9 @@ exports.handler = vandium.generic()
           connection.query(sql, function (error, results, fields) {                                  
     
             outcome = {};
-            outcome.message = "Added the overlay for the " + apisjson_slug + " APIs.json file."
+            outcome.message = "2) Added the overlay for the " + apisjson_slug + " APIs.json file."
     
-            callback( null, outcome );     
+            callback( null, sql );     
     
           });  
 
