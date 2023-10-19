@@ -23,7 +23,7 @@ exports.handler = vandium.generic()
       sql += " WHERE apisjson_url = " + connection.escape(apisjson_url);
       connection.query(sql, function (error, results, fields) {                
                 
-        if(results && results.length == 0){
+        if(!results && results.length == 0){
 
           var sql = "INSERT INTO apisjson_overlay(name,slug,description,image,apisjson_url)";
           sql += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(apisjson_url) + ")";
