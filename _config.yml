@@ -55,7 +55,7 @@ share:
 
 # Default footer image settings
 footer:
-    copyright:      API Evangelist
+    copyright:      ''
 
 # Disqus comments shortname, requires Disqus account https://disqus.com/
 disqus:
