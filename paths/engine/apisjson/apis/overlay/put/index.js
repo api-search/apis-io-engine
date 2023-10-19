@@ -31,9 +31,9 @@ exports.handler = vandium.generic()
     
             outcome = {};
             outcome.message = "3) Added the overlay for the " + apisjson_slug + " APIs.json file.";
-            outcome.sql = sql2;
-            outcome.error = error;
-            outcome.results = results;
+            //outcome.sql = sql2;
+            //outcome.error = error;
+            //outcome.results = results;
     
             callback( null, outcome );     
     
@@ -48,11 +48,11 @@ exports.handler = vandium.generic()
     
             outcome = {};
             outcome.message = "2) Added the overlay for the " + apisjson_slug + " APIs.json file.";
-            outcome.sql = sql3;
-            outcome.error = error;
-            outcome.results = results;            
+            //outcome.sql = sql3;
+            //outcome.error = error;
+            //outcome.results = results;            
     
-            callback( null, error );     
+            callback( null, outcome );     
     
           });  
 
@@ -71,7 +71,7 @@ exports.handler = vandium.generic()
                     
             outcome = {};
             outcome.message = "Updated the overlay for the " + humanURL + " APIs.json file.";
-            outcome.sql = sql4;
+            //outcome.sql = sql4;
     
             callback( null, outcome );     
     
