@@ -32,7 +32,7 @@ exports.handler = vandium.generic()
             outcome = {};
             outcome.message = "3) Added the overlay for the " + apisjson_slug + " APIs.json file."
     
-            callback( null, results );     
+            callback( null, error );     
     
           });  
 
@@ -46,7 +46,7 @@ exports.handler = vandium.generic()
             outcome = {};
             outcome.message = "2) Added the overlay for the " + apisjson_slug + " APIs.json file."
     
-            callback( null, results );     
+            callback( null, error );     
     
           });  
 
