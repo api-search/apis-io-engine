@@ -174,6 +174,7 @@ exports.handler = vandium.generic()
                 // Trimit
                 insert_apis = insert_apis.substring(0, insert_apis.length - 1);
                 insert_properties = insert_properties.substring(0, insert_properties.length - 1);
+                insert_api_properties = insert_properties.substring(0, insert_api_properties.length - 1);
                 insert_maintainers = insert_maintainers.substring(0, insert_maintainers.length - 1);
                 api_base_urls = api_base_urls.substring(0, api_base_urls.length - 1);
                 
