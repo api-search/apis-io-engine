@@ -106,9 +106,7 @@ jobs:
           aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws_region: us-east-1
-          function_name: 
-            m-s-apis-io-engineapisjsonapisproperties-pu
-            m-s-apis-io-engineapisproperties-pu
+          function_name: m-s-apis-io-engineapisjsonapisproperties-pu            
           zip_file: m-s-apis-io-engineapisjsonapisproperties-pu.zip
         
       - name: /engine/apisjson/apis/overlays put lambda deploy zip
