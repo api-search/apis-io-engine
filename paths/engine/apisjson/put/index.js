@@ -271,8 +271,8 @@ exports.handler = vandium.generic()
 
                                       outcome = {};
                                       outcome.message = "Successfully processed the " + apisjson_name + " APIs.json file."
-                                      outcome.sql3 = sql3;
-                                      outcome.sql4 = sql4;
+                                      //outcome.sql3 = sql3;
+                                      //outcome.sql4 = sql4;
 
                                       callback( null, outcome );     
                                 }
