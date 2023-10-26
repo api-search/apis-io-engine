@@ -129,6 +129,7 @@ exports.handler = vandium.generic()
                 if(apisjson.common){
                   for (let i = 0; i < apisjson.common.length; i++) {        
                       insert_api_properties += "(" + connection.escape(apisjson_url) + ",1," + connection.escape( apisjson.common[i].type) + "," + connection.escape(apisjson.common[i].url.replace('http:','https:')) + "),";
+                      api_base_urls += connection.escape(apisjson_url) + ",";
                     }                                        
                 }            
 
@@ -185,7 +186,7 @@ exports.handler = vandium.generic()
                     var sql3 = "DELETE FROM properties WHERE api_base_url IN(" + api_base_urls + ")";
                     connection.query(sql3, function (error3, results3, fields) { 
                       
-                      var sql4 = "INSERT INTO properties(api_base_url,type,url) VALUES" + insert_properties;
+                      var sql4 = "INSERT INTO properties(api_base_url,type,url) VALUES" + insert_api_properties;
                       connection.query(sql4, function (error4, results4, fields) { 
                     
                         var sql5 = "DELETE FROM maintainers WHERE apisjson_url = '" + apisjson_url + "'";
@@ -269,6 +270,8 @@ exports.handler = vandium.generic()
 
                                       outcome = {};
                                       outcome.message = "Successfully processed the " + apisjson_name + " APIs.json file."
+                                      outcome.sql3 = sql3;
+                                      outcome.sql4 = sql4;
 
                                       callback( null, outcome );     
                                 }
