@@ -186,7 +186,7 @@ exports.handler = vandium.generic()
                     var sql3 = "DELETE FROM properties WHERE api_base_url IN(" + api_base_urls + ")";
                     connection.query(sql3, function (error3, results3, fields) { 
                       
-                      var sql4 = "INSERT INTO properties(api_base_url,type,url) VALUES" + insert_api_properties;
+                      var sql4 = "INSERT INTO properties(api_base_url,common,type,url) VALUES" + insert_api_properties;
                       connection.query(sql4, function (error4, results4, fields) { 
                     
                         var sql5 = "DELETE FROM maintainers WHERE apisjson_url = '" + apisjson_url + "'";
