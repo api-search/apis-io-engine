@@ -44,7 +44,7 @@ The goals of this approach is to keep the APIs and their documentation modular a
 # Links
 This API is just one module in a suite of APIs supporting the APIs.io search engine.
 
-- [Website](https://apis-io-site.apievangelist.com) - The website for the APIs.io search engine.
-- [Developer Portal](https://apis-io-api.apievangelist.com) - The developer portal for the APIs.io search egine.
+- [Website](https://apis.io) - The website for the APIs.io search engine.
+- [Developer Portal](https://developer.apis.io) - The developer portal for the APIs.io search engine.
 
 You can get to all of the rest of the APIs using the developer portal, and search via website.
