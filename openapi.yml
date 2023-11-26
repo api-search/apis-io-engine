@@ -12,7 +12,7 @@ info:
 
 servers:
 
-  - url: https://8wmp1s1pni.execute-api.us-east-1.amazonaws.com/staging  
+  - url: https://engine-api.apis.io
 
 tags:
 

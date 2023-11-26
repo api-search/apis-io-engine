@@ -4,7 +4,7 @@ info:
   description: "This is the engine of the API search engine."
   version: "V1"
 servers:
-- url: "https://8wmp1s1pni.execute-api.us-east-1.amazonaws.com/{basePath}"
+- url: "https://engine-api.apis.io"
   variables:
     basePath:
       default: "staging"
