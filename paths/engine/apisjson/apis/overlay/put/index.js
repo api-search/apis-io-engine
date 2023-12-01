@@ -18,6 +18,7 @@ exports.handler = vandium.generic()
       let apisjson_slug = event.slug;
       let apisjson_description = event.description;
       let apisjson_image = event.image;
+      let apisjson_tags = event.tags;
             
       var sql = "SELECT * FROM apis_overlay";
       sql += " WHERE humanURL = " + connection.escape(humanURL);
@@ -25,8 +26,8 @@ exports.handler = vandium.generic()
                 
         if(!results){
 
-          var sql2 = "INSERT INTO apis_overlay(name,slug,description,image,humanURL)";
-          sql2 += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(humanURL) + ")";
+          var sql2 = "INSERT INTO apis_overlay(name,slug,description,image,tags,humanURL)";
+          sql2 += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(apisjson_tags) + "," + connection.escape(humanURL) + ")";
           connection.query(sql2, function (error, results, fields) {                                  
     
             outcome = {};
@@ -42,8 +43,8 @@ exports.handler = vandium.generic()
         }
         else if(results.length == 0){
 
-          var sql3 = "INSERT INTO apis_overlay(name,slug,description,image,humanURL)";
-          sql3 += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(humanURL) + ")";
+          var sql3 = "INSERT INTO apis_overlay(name,slug,description,image,tags,humanURL)";
+          sql3 += " VALUES(" + connection.escape(apisjson_name) + "," + connection.escape(apisjson_slug) + "," + connection.escape(apisjson_description) + "," + connection.escape(apisjson_image) + "," + connection.escape(apisjson_tags) + "," + connection.escape(humanURL) + ")";
           connection.query(sql3, function (error, results, fields) {                                  
     
             outcome = {};
@@ -65,6 +66,7 @@ exports.handler = vandium.generic()
           sql4 += ",slug=" + connection.escape(apisjson_slug);
           sql4 += ",description=" + connection.escape(apisjson_description);
           sql4 += ",image=" + connection.escape(apisjson_image);
+          sql4 += ",tags=" + connection.escape(apisjson_tags);
           sql4 += " WHERE humanURL = " + connection.escape(humanURL);
     
           connection.query(sql4, function (error, results, fields) {                
