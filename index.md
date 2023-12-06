@@ -2,7 +2,7 @@
 layout: page
 title: APIs.io Engine API Docs
 ---
-This is the documentation for the APIs.io Rules APIs, providing the used to pull and process remote APIs.json indexes.
+This is the documentation for the APIs.io Engine API, providing the used to pull and process remote APIs.json indexes.
 
 <div id="swagger-ui"></div>
 <style>
