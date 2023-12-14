@@ -165,7 +165,7 @@ exports.handler = vandium.generic()
         else{
 
           outcome = {};
-          outcome.sql = sql;
+          //outcome.sql = sql;
           outcome.message = "No more properties to pull.";
 
           callback( null, outcome );
