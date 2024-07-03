@@ -30,12 +30,14 @@ exports.handler = vandium.generic()
     var provider_insert = "INSERT INTO providers(aid,name,description,tags) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags.join(", ")) + ")";
     var aid = event.aid;
 
+    // APIS
     var api_insert = "INSERT INTO providers(aid,name,description,tags) VALUES";
     for (let i = 0; i < event.apis.length; i++) {
       api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + "),";
     }
     api_insert = api_insert.substring(0, api_insert.length - 1);
 
+    // Properties
     var property_insert = "INSERT INTO properties(aid,property) VALUES";
     for (let i = 0; i < event.apis.length; i++) {
       for (let j = 0; j < event.apis[i].properties.length; j++) {
@@ -48,6 +50,21 @@ exports.handler = vandium.generic()
       }    
     }
     property_insert = property_insert.substring(0, property_insert.length - 1);    
+
+    // Tags
+    var tag_insert = "INSERT INTO tags(aid,tag) VALUES";
+    for (let i = 0; i < event.apis.length; i++) {
+      for (let j = 0; j < event.apis[i].tags.length; j++) {
+        tag_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].tags[j]) + "),";
+      }
+    }
+    if(event.common){
+      for (let i = 0; i < event.tags.length; i++) {
+        tag_insert += "(" + connection.escape(aid) + "," + connection.escape(event.tags[i]) + "),";
+      }    
+    }
+    tag_insert = tag_insert.substring(0, tag_insert.length - 1);    
+
 
     // DELETE providers
     var sql = "DELETE FROM providers WHERE aid = '" + aid + "'";
@@ -70,21 +87,30 @@ exports.handler = vandium.generic()
             // INSERT providers
             connection.query(provider_insert, function (error, results, fields) { 
 
-              // INSERT providers
+              // INSERT apis
               connection.query(api_insert, function (error, results, fields) { 
 
-                // INSERT providers
+                // INSERT properties
                 connection.query(property_insert, function (error, results, fields) { 
 
-                  callback( null, results );
+                  // INSERT tags
+                  connection.query(tags_insert, function (error, results, fields) { 
+
+                    var response = {};
+                    response.results = "Successfully Processed!";
+                    callback( null, response );
+
+                    }).on('error', err => {
+                      callback( null, err );
+                    }); // end tags    
 
                   }).on('error', err => {
                     callback( null, err );
-                  }); // end providers     
+                  }); // end properties     
 
                 }).on('error', err => {
                   callback( null, err );
-                }); // end providers       
+                }); // end apis       
 
               }).on('error', err => {
                 callback( null, err );
