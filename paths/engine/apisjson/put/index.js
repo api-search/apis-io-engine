@@ -28,7 +28,7 @@ exports.handler = vandium.generic()
     const weekNumber = Math.ceil(days / 7);    
 
     var provider_insert = "INSERT INTO providers(aid,name,description,tags) VALUES('" + connection.escape(event.aid) + "','" + connection.escape(event.name) + "','" + connection.escape(event.description) + "','" + connection.escape(event.tags) + "'";
-     
+    var aid = event.aid;
 
     // DELETE providers
     var sql = "DELETE FROM providers WHERE aid = '" + aid + "'";
@@ -51,14 +51,13 @@ exports.handler = vandium.generic()
             // INSERT providers
             connection.query(provider_insert, function (error, results, fields) { 
 
+              callback( null, results );
 
               }).on('error', err => {
-                callback( null, err )
+                callback( null, err );
               }); // end providers            
 
             // INSERTS
-
-
 
           }).on('error', err => {
             callback( null, err )
