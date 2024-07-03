@@ -35,7 +35,17 @@ exports.handler = vandium.generic()
       api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + "),";
     }
     api_insert = api_insert.substring(0, api_insert.length - 1);
-    console.log("HERE: " + api_insert);
+
+    var property_insert = "INSERT INTO properties(aid,property) VALUES";
+    for (let i = 0; i < event.apis.length; i++) {
+      for (let j = 0; j < event.apis[i].properties.length; j++) {
+        property_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].properties[j].type) + "),";
+      }
+    }
+    for (let i = 0; i < event.common.length; i++) {
+      property_insert += "(" + connection.escape(aid) + "," + connection.escape(event.common[i].type) + "),";
+    }    
+    property_insert = property_insert.substring(0, property_insert.length - 1);    
 
     // DELETE providers
     var sql = "DELETE FROM providers WHERE aid = '" + aid + "'";
@@ -61,7 +71,14 @@ exports.handler = vandium.generic()
               // INSERT providers
               connection.query(api_insert, function (error, results, fields) { 
 
-                callback( null, api_insert );
+                // INSERT providers
+                connection.query(property_insert, function (error, results, fields) { 
+
+                  callback( null, results );
+
+                  }).on('error', err => {
+                    callback( null, err );
+                  }); // end providers     
 
                 }).on('error', err => {
                   callback( null, err );
