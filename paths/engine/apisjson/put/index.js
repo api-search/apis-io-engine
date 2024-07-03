@@ -61,7 +61,7 @@ exports.handler = vandium.generic()
               // INSERT providers
               connection.query(api_insert, function (error, results, fields) { 
 
-                callback( null, results );
+                callback( null, api_insert );
 
                 }).on('error', err => {
                   callback( null, err );
