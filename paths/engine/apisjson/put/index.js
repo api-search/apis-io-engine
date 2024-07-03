@@ -29,9 +29,8 @@ exports.handler = vandium.generic()
 
     var aid = event.aid;
     var apis_json_url = event.url;
-
     var node = event.tags[0].toLowerCase();
-    var apis_json_url = "https://" + node + ".apis.io/apis/" + aid + "/apis/";
+    var search_node_url = "https://" + node + ".apis.io/apis/" + aid + "/apis/";
 
     var provider_insert = "INSERT INTO providers(aid,name,description,tags,score,apis_json_url,search_node_url) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags.join(", ")) + "," + connection.escape(event.score) + "," + connection.escape(apis_json_url) + "," + connection.escape(search_node_url) + ")";
 
