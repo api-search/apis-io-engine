@@ -32,10 +32,10 @@ exports.handler = vandium.generic()
 
     var api_insert = "INSERT INTO providers(aid,name,description,tags) VALUES";
     for (let i = 0; i < event.apis.length; i++) {
-      api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + ")";
+      api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + "),";
     }
     api_insert = api_insert.substring(0, api_insert.length - 1);
-    console.log(api_insert);
+    console.log("HERE: " + api_insert);
 
     // DELETE providers
     var sql = "DELETE FROM providers WHERE aid = '" + aid + "'";
