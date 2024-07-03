@@ -27,13 +27,19 @@ exports.handler = vandium.generic()
      
     const weekNumber = Math.ceil(days / 7);    
 
-    var provider_insert = "INSERT INTO providers(aid,name,description,tags,score) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags.join(", ")) + "," + connection.escape(event.score) + ")";
     var aid = event.aid;
+    var apis_json_url = event.url;
+
+    var node = event.tags[0].toLowerCase();
+    var apis_json_url = "https://" + node + ".apis.io/apis/" + aid + "/apis/";
+
+    var provider_insert = "INSERT INTO providers(aid,name,description,tags,score,apis_json_url,search_node_url) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags.join(", ")) + "," + connection.escape(event.score) + "," + connection.escape(apis_json_url) + "," + connection.escape(search_node_url) + ")";
 
     // APIS
-    var api_insert = "INSERT INTO apis(aid,name,description,tags,score) VALUES";
+    var api_insert = "INSERT INTO apis(aid,name,description,tags,score,apis_json_url,search_node_url) VALUES";
     for (let i = 0; i < event.apis.length; i++) {
-      api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + "," + connection.escape(event.apis[i].score) + "),";
+      var human_url = event.apis[i].humanUrl;
+      api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + "," + connection.escape(event.apis[i].score) + "," + connection.escape(apis_json_url) + "," + connection.escape(search_node_url) + "," + connection.escape(human_url) + "),";
     }
     api_insert = api_insert.substring(0, api_insert.length - 1);
 
