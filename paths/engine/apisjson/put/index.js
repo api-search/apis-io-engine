@@ -27,7 +27,7 @@ exports.handler = vandium.generic()
      
     const weekNumber = Math.ceil(days / 7);    
 
-    var provider_insert = "INSERT INTO providers(aid,name,description,tags) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags) + ")";
+    var provider_insert = "INSERT INTO providers(aid,name,description,tags) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags.join(", ")) + ")";
     var aid = event.aid;
 
     // DELETE providers
