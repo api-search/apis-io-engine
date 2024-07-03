@@ -27,13 +27,13 @@ exports.handler = vandium.generic()
      
     const weekNumber = Math.ceil(days / 7);    
 
-    var provider_insert = "INSERT INTO providers(aid,name,description,tags) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags.join(", ")) + ")";
+    var provider_insert = "INSERT INTO providers(aid,name,description,tags,score) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags.join(", ")) + "," + connection.escape(event.score) + ")";
     var aid = event.aid;
 
     // APIS
-    var api_insert = "INSERT INTO providers(aid,name,description,tags) VALUES";
+    var api_insert = "INSERT INTO apis(aid,name,description,tags,score) VALUES";
     for (let i = 0; i < event.apis.length; i++) {
-      api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + "),";
+      api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + ")," + connection.escape(event.apis[i].score) + "),";
     }
     api_insert = api_insert.substring(0, api_insert.length - 1);
 
