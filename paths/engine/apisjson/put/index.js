@@ -94,7 +94,7 @@ exports.handler = vandium.generic()
                 connection.query(property_insert, function (error, results, fields) { 
 
                   // INSERT tags
-                  connection.query(tags_insert, function (error, results, fields) { 
+                  connection.query(tag_insert, function (error, results, fields) { 
 
                     var response = {};
                     response.results = "Successfully Processed!";
