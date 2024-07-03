@@ -30,6 +30,14 @@ exports.handler = vandium.generic()
     var provider_insert = "INSERT INTO providers(aid,name,description,tags) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags.join(", ")) + ")";
     var aid = event.aid;
 
+    var api_insert = "INSERT INTO providers(aid,name,description,tags) VALUES";
+    for (let i = 0; i < event.apis.length; i++) {
+      api_insert += (" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + ")
+      if(i < event.apis.length){
+        api_insert += ",";
+      }
+    }
+
     // DELETE providers
     var sql = "DELETE FROM providers WHERE aid = '" + aid + "'";
     connection.query(sql, function (error, results, fields) { 
@@ -51,7 +59,14 @@ exports.handler = vandium.generic()
             // INSERT providers
             connection.query(provider_insert, function (error, results, fields) { 
 
-              callback( null, results );
+              // INSERT providers
+              connection.query(api_insert, function (error, results, fields) { 
+
+                callback( null, results );
+
+                }).on('error', err => {
+                  callback( null, err );
+                }); // end providers       
 
               }).on('error', err => {
                 callback( null, err );
