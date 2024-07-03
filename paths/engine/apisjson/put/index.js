@@ -42,9 +42,11 @@ exports.handler = vandium.generic()
         property_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].properties[j].type) + "),";
       }
     }
-    for (let i = 0; i < event.common.length; i++) {
-      property_insert += "(" + connection.escape(aid) + "," + connection.escape(event.common[i].type) + "),";
-    }    
+    if(event.common){
+      for (let i = 0; i < event.common.length; i++) {
+        property_insert += "(" + connection.escape(aid) + "," + connection.escape(event.common[i].type) + "),";
+      }    
+    }
     property_insert = property_insert.substring(0, property_insert.length - 1);    
 
     // DELETE providers
