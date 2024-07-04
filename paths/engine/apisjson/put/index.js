@@ -45,7 +45,13 @@ exports.handler = vandium.generic()
       var api_insert = "INSERT INTO apis(aid,name,description,tags,score,apis_json_url,search_node_url,human_url) VALUES";    
       for (let i = 0; i < event.apis.length; i++) {
         var human_url = event.apis[i].humanURL;
-        api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + "," + connection.escape(event.apis[i].score) + "," + connection.escape(apis_json_url) + "," + connection.escape(search_node_url) + "," + connection.escape(human_url) + "),";
+        if(event.apis[i].score){
+          this_score = event.apis[i].score;
+        }
+        else{
+          this_score = 0;
+        }        
+        api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + "," + connection.escape(this_score) + "," + connection.escape(apis_json_url) + "," + connection.escape(search_node_url) + "," + connection.escape(human_url) + "),";
       }
       api_insert = api_insert.substring(0, api_insert.length - 1);
 
