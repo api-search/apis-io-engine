@@ -32,7 +32,13 @@ exports.handler = vandium.generic()
     var node = event.tags[0].toLowerCase();
     var search_node_url = "https://" + node + ".apis.io/apis/" + aid + "/apis/";
 
-    var provider_insert = "INSERT INTO providers(aid,name,description,tags,score,apis_json_url,search_node_url) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags.join(", ")) + "," + connection.escape(event.score) + "," + connection.escape(apis_json_url) + "," + connection.escape(search_node_url) + ")";
+    if(event.score){
+      this_score = event.score;
+    }
+    else{
+      this_score = 0;
+    }
+    var provider_insert = "INSERT INTO providers(aid,name,description,tags,score,apis_json_url,search_node_url) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags.join(", ")) + "," + connection.escape(this_score) + "," + connection.escape(apis_json_url) + "," + connection.escape(search_node_url) + ")";
 
     // APIS
     if(event.apis){
