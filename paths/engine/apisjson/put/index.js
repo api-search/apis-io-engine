@@ -35,18 +35,22 @@ exports.handler = vandium.generic()
     var provider_insert = "INSERT INTO providers(aid,name,description,tags,score,apis_json_url,search_node_url) VALUES(" + connection.escape(event.aid) + "," + connection.escape(event.name) + "," + connection.escape(event.description) + "," + connection.escape(event.tags.join(", ")) + "," + connection.escape(event.score) + "," + connection.escape(apis_json_url) + "," + connection.escape(search_node_url) + ")";
 
     // APIS
-    var api_insert = "INSERT INTO apis(aid,name,description,tags,score,apis_json_url,search_node_url,human_url) VALUES";
-    for (let i = 0; i < event.apis.length; i++) {
-      var human_url = event.apis[i].humanURL;
-      api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + "," + connection.escape(event.apis[i].score) + "," + connection.escape(apis_json_url) + "," + connection.escape(search_node_url) + "," + connection.escape(human_url) + "),";
-    }
-    api_insert = api_insert.substring(0, api_insert.length - 1);
+    if(event.apis){
+      var api_insert = "INSERT INTO apis(aid,name,description,tags,score,apis_json_url,search_node_url,human_url) VALUES";    
+      for (let i = 0; i < event.apis.length; i++) {
+        var human_url = event.apis[i].humanURL;
+        api_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].name) + "," + connection.escape(event.apis[i].description) + "," + connection.escape(event.apis[i].tags.join(", ")) + "," + connection.escape(event.apis[i].score) + "," + connection.escape(apis_json_url) + "," + connection.escape(search_node_url) + "," + connection.escape(human_url) + "),";
+      }
+      api_insert = api_insert.substring(0, api_insert.length - 1);
 
-    // Properties
-    var property_insert = "INSERT INTO properties(aid,property) VALUES";
-    for (let i = 0; i < event.apis.length; i++) {
-      for (let j = 0; j < event.apis[i].properties.length; j++) {
-        property_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].properties[j].type) + "),";
+      // Properties
+      var property_insert = "INSERT INTO properties(aid,property) VALUES";
+      for (let i = 0; i < event.apis.length; i++) {
+        if(event.apis[i].properties){
+          for (let j = 0; j < event.apis[i].properties.length; j++) {
+            property_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].properties[j].type) + "),";
+          }
+        }
       }
     }
     if(event.common){
@@ -58,12 +62,16 @@ exports.handler = vandium.generic()
 
     // Tags
     var tag_insert = "INSERT INTO tags(aid,tag) VALUES";
-    for (let i = 0; i < event.apis.length; i++) {
-      for (let j = 0; j < event.apis[i].tags.length; j++) {
-        tag_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].tags[j]) + "),";
+    if(event.apis){
+      for (let i = 0; i < event.apis.length; i++) {
+        if(event.apis[i].tag){
+          for (let j = 0; j < event.apis[i].tags.length; j++) {
+            tag_insert += "(" + connection.escape(event.apis[i].aid) + "," + connection.escape(event.apis[i].tags[j]) + "),";
+          }
+        }
       }
     }
-    if(event.common){
+    if(event.tags){
       for (let i = 0; i < event.tags.length; i++) {
         tag_insert += "(" + connection.escape(aid) + "," + connection.escape(event.tags[i]) + "),";
       }    
