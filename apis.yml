@@ -1,4 +1,4 @@
-aid: apis-io
+aid: apis-io-engine
 specificationVersion: '0.18'
 name: APIs.io Engine API
 description: >-
@@ -14,7 +14,7 @@ tags:
 
 apis:
 
-  - aid: apis-io:engine-api
+  - aid: apis-io-engine:engine-api
     name: APIs.io Engine API
     description: >-
       This is the API for powering APIs.io.
