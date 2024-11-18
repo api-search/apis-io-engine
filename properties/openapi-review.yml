@@ -1,0 +1,3339 @@
+executed: '2024-11-18T00:54:55.721Z'
+results:
+  - code: openapi-external-docs-error
+    message: OpenAPI MUST Have External Documentation
+    path: []
+    severity: 0
+    range:
+      start:
+        line: 0
+        character: 0
+      end:
+        line: 223
+        character: 22
+  - code: openapi-info-license-error
+    message: Info MUST Have License
+    path:
+      - info
+    severity: 0
+    range:
+      start:
+        line: 1
+        character: 5
+      end:
+        line: 9
+        character: 33
+  - code: openapi-info-terms-of-service-error
+    message: Info MUST Have Terms of Service
+    path:
+      - info
+    severity: 0
+    range:
+      start:
+        line: 1
+        character: 5
+      end:
+        line: 9
+        character: 33
+  - code: openapi-info-title-info
+    message: Info Has Title
+    path:
+      - info
+      - title
+    severity: 2
+    range:
+      start:
+        line: 2
+        character: 9
+      end:
+        line: 2
+        character: 27
+  - code: openapi-info-title-upper-case-info
+    message: Info Title MUST Have First Characters Capitalized
+    path:
+      - info
+      - title
+    severity: 2
+    range:
+      start:
+        line: 2
+        character: 9
+      end:
+        line: 2
+        character: 27
+  - code: openapi-info-description-info
+    message: Info Has Description
+    path:
+      - info
+      - description
+    severity: 2
+    range:
+      start:
+        line: 3
+        character: 15
+      end:
+        line: 5
+        character: 15
+  - code: openapi-info-version-info
+    message: Info Has Version
+    path:
+      - info
+      - version
+    severity: 2
+    range:
+      start:
+        line: 6
+        character: 11
+      end:
+        line: 6
+        character: 13
+  - code: openapi-info-contact-info
+    message: Info Has Contact Object
+    path:
+      - info
+      - contact
+    severity: 2
+    range:
+      start:
+        line: 7
+        character: 10
+      end:
+        line: 9
+        character: 33
+  - code: openapi-info-contact-url-error
+    message: Info MUST Have Contact URL
+    path:
+      - info
+      - contact
+    severity: 0
+    range:
+      start:
+        line: 7
+        character: 10
+      end:
+        line: 9
+        character: 33
+  - code: openapi-info-contact-name-info
+    message: Info Has Contact Name
+    path:
+      - info
+      - contact
+      - name
+    severity: 2
+    range:
+      start:
+        line: 8
+        character: 10
+      end:
+        line: 8
+        character: 18
+  - code: openapi-info-contact-email-info
+    message: Info Has Contact Email
+    path:
+      - info
+      - contact
+      - email
+    severity: 2
+    range:
+      start:
+        line: 9
+        character: 11
+      end:
+        line: 9
+        character: 33
+  - code: openapi-tags-object-info
+    message: OpenAPIs Have a Tag Object
+    path:
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 12
+        character: 5
+      end:
+        line: 14
+        character: 39
+  - code: openapi-tags-name-info
+    message: Tags Have a Name
+    path:
+      - tags
+      - '0'
+      - name
+    severity: 2
+    range:
+      start:
+        line: 13
+        character: 10
+      end:
+        line: 13
+        character: 16
+  - code: openapi-tags-description-info
+    message: Tags Have a Description
+    path:
+      - tags
+      - '0'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 14
+        character: 17
+      end:
+        line: 14
+        character: 39
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /engine/apisjson
+    severity: 0
+    range:
+      start:
+        line: 16
+        character: 19
+      end:
+        line: 33
+        character: 52
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /engine/apisjson
+    severity: 2
+    range:
+      start:
+        line: 16
+        character: 19
+      end:
+        line: 33
+        character: 52
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /engine/apisjson
+    severity: 2
+    range:
+      start:
+        line: 16
+        character: 19
+      end:
+        line: 33
+        character: 52
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+    severity: 0
+    range:
+      start:
+        line: 17
+        character: 8
+      end:
+        line: 33
+        character: 52
+  - code: openapi-request-body-on-put-error-info
+    message: PUT Requests MUST Have a Body
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+    severity: 0
+    range:
+      start:
+        line: 17
+        character: 8
+      end:
+        line: 33
+        character: 52
+  - code: openapi-operations-operation-ids-camel-case-error
+    message: Operation Identifier MUST Be camelCase
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - operationId
+    severity: 0
+    range:
+      start:
+        line: 18
+        character: 19
+      end:
+        line: 18
+        character: 34
+  - code: openapi-operations-operation-ids-camel-case-info
+    message: Operation Identifier Is camelCase
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - operationId
+    severity: 2
+    range:
+      start:
+        line: 18
+        character: 19
+      end:
+        line: 18
+        character: 34
+  - code: openapi-operations-operation-ids-info
+    message: Operation Has Identifier
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - operationId
+    severity: 2
+    range:
+      start:
+        line: 18
+        character: 19
+      end:
+        line: 18
+        character: 34
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 19
+        character: 15
+      end:
+        line: 19
+        character: 32
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 19
+        character: 15
+      end:
+        line: 19
+        character: 32
+  - code: openapi-operations-description-info
+    message: Operation Has Description
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - description
+    severity: 2
+    range:
+      start:
+        line: 20
+        character: 19
+      end:
+        line: 20
+        character: 39
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 21
+        character: 11
+      end:
+        line: 22
+        character: 16
+  - code: openapi-operations-tags-upper-case-info
+    message: Operation Tag Names Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - tags
+      - '0'
+    severity: 2
+    range:
+      start:
+        line: 22
+        character: 10
+      end:
+        line: 22
+        character: 16
+  - code: openapi-response-put-204-status-code-error
+    message: PUT 204 Status Code
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 23
+        character: 16
+      end:
+        line: 33
+        character: 52
+  - code: openapi-response-put-400-status-code-error
+    message: PUT Responses MUST Have 400 Status Codes
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 23
+        character: 16
+      end:
+        line: 33
+        character: 52
+  - code: openapi-response-put-401-status-code-error
+    message: PUT Responses MUST 401 Status Codes
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 23
+        character: 16
+      end:
+        line: 33
+        character: 52
+  - code: openapi-response-put-403-status-code-error
+    message: PUT Responses MUST Have 403 Status Codes
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 23
+        character: 16
+      end:
+        line: 33
+        character: 52
+  - code: openapi-response-put-404-status-code-error
+    message: PUT Responses MUST Have 404 Status Codes
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 23
+        character: 16
+      end:
+        line: 33
+        character: 52
+  - code: openapi-response-put-429-status-code-error
+    message: PUT Responses MUST Have 429 Status Codes
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 23
+        character: 16
+      end:
+        line: 33
+        character: 52
+  - code: openapi-response-put-500-status-code-error
+    message: PUT Responses MUST Have 500 Status Codes
+    path:
+      - paths
+      - /engine/apisjson
+      - put
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 23
+        character: 16
+      end:
+        line: 33
+        character: 52
+  - code: openapi-components-examples-error
+    message: Components MUST Have a Examples Property
+    path:
+      - components
+    severity: 0
+    range:
+      start:
+        line: 34
+        character: 11
+      end:
+        line: 223
+        character: 22
+  - code: openapi-components-headers-error
+    message: Components MUST Have a Headers Property
+    path:
+      - components
+    severity: 0
+    range:
+      start:
+        line: 34
+        character: 11
+      end:
+        line: 223
+        character: 22
+  - code: openapi-components-parameters-error
+    message: Components MUST Have a Parameters Property
+    path:
+      - components
+    severity: 0
+    range:
+      start:
+        line: 34
+        character: 11
+      end:
+        line: 223
+        character: 22
+  - code: openapi-components-responses-error
+    message: Components MUST have a responses property.
+    path:
+      - components
+    severity: 0
+    range:
+      start:
+        line: 34
+        character: 11
+      end:
+        line: 223
+        character: 22
+  - code: openapi-security-schemes-info
+    message: Components Have a Security Schemes
+    path:
+      - components
+      - securitySchemes
+    severity: 2
+    range:
+      start:
+        line: 42
+        character: 18
+      end:
+        line: 46
+        character: 16
+  - code: openapi-components-schemas-info
+    message: Components Have a Schema Property
+    path:
+      - components
+      - schemas
+    severity: 2
+    range:
+      start:
+        line: 47
+        character: 10
+      end:
+        line: 223
+        character: 22
+  - code: openapi-schema-description-error
+    message: Schema MUST Have a Description.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+    severity: 0
+    range:
+      start:
+        line: 48
+        character: 13
+      end:
+        line: 100
+        character: 85
+  - code: openapi-schema-names-pascal-case-error
+    message: Schema Names MUST Be PascalCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+    severity: 0
+    range:
+      start:
+        line: 48
+        character: 13
+      end:
+        line: 100
+        character: 85
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - type
+    severity: 2
+    range:
+      start:
+        line: 49
+        character: 12
+      end:
+        line: 49
+        character: 18
+  - code: openapi-schema-required-info
+    message: Schema Has Required Property
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - required
+    severity: 2
+    range:
+      start:
+        line: 50
+        character: 15
+      end:
+        line: 53
+        character: 13
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 54
+        character: 17
+      end:
+        line: 100
+        character: 85
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - name
+    severity: 2
+    range:
+      start:
+        line: 55
+        character: 13
+      end:
+        line: 58
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - name
+    severity: 0
+    range:
+      start:
+        line: 55
+        character: 13
+      end:
+        line: 58
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - name
+      - description
+    severity: 2
+    range:
+      start:
+        line: 57
+        character: 23
+      end:
+        line: 57
+        character: 56
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - name
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 58
+        character: 21
+      end:
+        line: 58
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - description
+    severity: 2
+    range:
+      start:
+        line: 59
+        character: 20
+      end:
+        line: 62
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - description
+    severity: 0
+    range:
+      start:
+        line: 59
+        character: 20
+      end:
+        line: 62
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - description
+      - description
+    severity: 2
+    range:
+      start:
+        line: 61
+        character: 23
+      end:
+        line: 61
+        character: 49
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - description
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 62
+        character: 21
+      end:
+        line: 62
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - url
+    severity: 2
+    range:
+      start:
+        line: 63
+        character: 12
+      end:
+        line: 66
+        character: 42
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - url
+    severity: 0
+    range:
+      start:
+        line: 63
+        character: 12
+      end:
+        line: 66
+        character: 42
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - url
+    severity: 0
+    range:
+      start:
+        line: 63
+        character: 12
+      end:
+        line: 66
+        character: 42
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - url
+      - description
+    severity: 2
+    range:
+      start:
+        line: 65
+        character: 23
+      end:
+        line: 65
+        character: 61
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - image
+    severity: 2
+    range:
+      start:
+        line: 67
+        character: 14
+      end:
+        line: 69
+        character: 49
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - image
+    severity: 0
+    range:
+      start:
+        line: 67
+        character: 14
+      end:
+        line: 69
+        character: 49
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - image
+    severity: 0
+    range:
+      start:
+        line: 67
+        character: 14
+      end:
+        line: 69
+        character: 49
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - image
+      - description
+    severity: 2
+    range:
+      start:
+        line: 69
+        character: 23
+      end:
+        line: 69
+        character: 49
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - created
+    severity: 2
+    range:
+      start:
+        line: 70
+        character: 16
+      end:
+        line: 73
+        character: 53
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - created
+    severity: 0
+    range:
+      start:
+        line: 70
+        character: 16
+      end:
+        line: 73
+        character: 53
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - created
+    severity: 0
+    range:
+      start:
+        line: 70
+        character: 16
+      end:
+        line: 73
+        character: 53
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - created
+      - description
+    severity: 2
+    range:
+      start:
+        line: 73
+        character: 23
+      end:
+        line: 73
+        character: 53
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - modified
+    severity: 2
+    range:
+      start:
+        line: 74
+        character: 17
+      end:
+        line: 77
+        character: 54
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - modified
+    severity: 0
+    range:
+      start:
+        line: 74
+        character: 17
+      end:
+        line: 77
+        character: 54
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - modified
+    severity: 0
+    range:
+      start:
+        line: 74
+        character: 17
+      end:
+        line: 77
+        character: 54
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - modified
+      - description
+    severity: 2
+    range:
+      start:
+        line: 77
+        character: 23
+      end:
+        line: 77
+        character: 54
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - specificationVersion
+    severity: 2
+    range:
+      start:
+        line: 78
+        character: 29
+      end:
+        line: 80
+        character: 61
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - specificationVersion
+    severity: 0
+    range:
+      start:
+        line: 78
+        character: 29
+      end:
+        line: 80
+        character: 61
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - specificationVersion
+    severity: 0
+    range:
+      start:
+        line: 78
+        character: 29
+      end:
+        line: 80
+        character: 61
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - specificationVersion
+      - description
+    severity: 2
+    range:
+      start:
+        line: 80
+        character: 23
+      end:
+        line: 80
+        character: 61
+  - code: openapi-schema-properties-array-maxitems-error
+    message: Schema Array Properties MUST Have Max Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - apis
+    severity: 0
+    range:
+      start:
+        line: 81
+        character: 13
+      end:
+        line: 85
+        character: 51
+  - code: openapi-schema-properties-array-maxitems-info
+    message: Schema Array Properties Have Max Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - apis
+    severity: 2
+    range:
+      start:
+        line: 81
+        character: 13
+      end:
+        line: 85
+        character: 51
+  - code: openapi-schema-properties-array-minitems-error
+    message: Schema Array Properties MUST Have Min Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - apis
+    severity: 0
+    range:
+      start:
+        line: 81
+        character: 13
+      end:
+        line: 85
+        character: 51
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - apis
+    severity: 2
+    range:
+      start:
+        line: 81
+        character: 13
+      end:
+        line: 85
+        character: 51
+  - code: openapi-schema-properties-array-items-info
+    message: Schema Array Properties Has Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - apis
+      - items
+    severity: 2
+    range:
+      start:
+        line: 83
+        character: 16
+      end:
+        line: 84
+        character: 44
+  - code: openapi-schema-properties-array-maxitems-error
+    message: Schema Array Properties MUST Have Max Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - maintainers
+    severity: 0
+    range:
+      start:
+        line: 86
+        character: 20
+      end:
+        line: 90
+        character: 56
+  - code: openapi-schema-properties-array-maxitems-info
+    message: Schema Array Properties Have Max Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - maintainers
+    severity: 2
+    range:
+      start:
+        line: 86
+        character: 20
+      end:
+        line: 90
+        character: 56
+  - code: openapi-schema-properties-array-minitems-error
+    message: Schema Array Properties MUST Have Min Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - maintainers
+    severity: 0
+    range:
+      start:
+        line: 86
+        character: 20
+      end:
+        line: 90
+        character: 56
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - maintainers
+    severity: 2
+    range:
+      start:
+        line: 86
+        character: 20
+      end:
+        line: 90
+        character: 56
+  - code: openapi-schema-properties-array-items-info
+    message: Schema Array Properties Has Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - maintainers
+      - items
+    severity: 2
+    range:
+      start:
+        line: 88
+        character: 16
+      end:
+        line: 89
+        character: 51
+  - code: openapi-schema-properties-array-maxitems-error
+    message: Schema Array Properties MUST Have Max Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - tags
+    severity: 0
+    range:
+      start:
+        line: 91
+        character: 13
+      end:
+        line: 95
+        character: 51
+  - code: openapi-schema-properties-array-maxitems-info
+    message: Schema Array Properties Have Max Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 91
+        character: 13
+      end:
+        line: 95
+        character: 51
+  - code: openapi-schema-properties-array-minitems-error
+    message: Schema Array Properties MUST Have Min Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - tags
+    severity: 0
+    range:
+      start:
+        line: 91
+        character: 13
+      end:
+        line: 95
+        character: 51
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 91
+        character: 13
+      end:
+        line: 95
+        character: 51
+  - code: openapi-schema-properties-array-items-info
+    message: Schema Array Properties Has Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - tags
+      - items
+    severity: 2
+    range:
+      start:
+        line: 93
+        character: 16
+      end:
+        line: 94
+        character: 44
+  - code: openapi-schema-properties-array-maxitems-error
+    message: Schema Array Properties MUST Have Max Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - include
+    severity: 0
+    range:
+      start:
+        line: 96
+        character: 16
+      end:
+        line: 100
+        character: 85
+  - code: openapi-schema-properties-array-maxitems-info
+    message: Schema Array Properties Have Max Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - include
+    severity: 2
+    range:
+      start:
+        line: 96
+        character: 16
+      end:
+        line: 100
+        character: 85
+  - code: openapi-schema-properties-array-minitems-error
+    message: Schema Array Properties MUST Have Min Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - include
+    severity: 0
+    range:
+      start:
+        line: 96
+        character: 16
+      end:
+        line: 100
+        character: 85
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - include
+    severity: 2
+    range:
+      start:
+        line: 96
+        character: 16
+      end:
+        line: 100
+        character: 85
+  - code: openapi-schema-properties-array-items-info
+    message: Schema Array Properties Has Items
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - include
+      - items
+    severity: 2
+    range:
+      start:
+        line: 98
+        character: 16
+      end:
+        line: 99
+        character: 48
+  - code: invalid-ref
+    path:
+      - components
+      - schemas
+      - APIsJSON
+      - properties
+      - include
+      - items
+      - $ref
+    message: '''#/components/schemas/Include'' does not exist'
+    severity: 0
+    range:
+      start:
+        line: 99
+        character: 18
+      end:
+        line: 99
+        character: 48
+  - code: openapi-schema-names-pascal-case-error
+    message: Schema Names MUST Be PascalCase.
+    path:
+      - components
+      - schemas
+      - API
+    severity: 0
+    range:
+      start:
+        line: 101
+        character: 8
+      end:
+        line: 150
+        character: 56
+  - code: openapi-schema-type-error
+    message: Schema MUST Have Type Property
+    path:
+      - components
+      - schemas
+      - API
+    severity: 0
+    range:
+      start:
+        line: 101
+        character: 8
+      end:
+        line: 150
+        character: 56
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - API
+      - description
+    severity: 2
+    range:
+      start:
+        line: 102
+        character: 19
+      end:
+        line: 102
+        character: 45
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - name
+    severity: 2
+    range:
+      start:
+        line: 112
+        character: 13
+      end:
+        line: 115
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - name
+    severity: 0
+    range:
+      start:
+        line: 112
+        character: 13
+      end:
+        line: 115
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - name
+      - description
+    severity: 2
+    range:
+      start:
+        line: 114
+        character: 23
+      end:
+        line: 114
+        character: 27
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - name
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 115
+        character: 21
+      end:
+        line: 115
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - description
+    severity: 2
+    range:
+      start:
+        line: 116
+        character: 20
+      end:
+        line: 119
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - description
+    severity: 0
+    range:
+      start:
+        line: 116
+        character: 20
+      end:
+        line: 119
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - description
+      - description
+    severity: 2
+    range:
+      start:
+        line: 118
+        character: 23
+      end:
+        line: 118
+        character: 45
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - description
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 119
+        character: 21
+      end:
+        line: 119
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - image
+    severity: 2
+    range:
+      start:
+        line: 120
+        character: 14
+      end:
+        line: 122
+        character: 59
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - image
+    severity: 0
+    range:
+      start:
+        line: 120
+        character: 14
+      end:
+        line: 122
+        character: 59
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - image
+    severity: 0
+    range:
+      start:
+        line: 120
+        character: 14
+      end:
+        line: 122
+        character: 59
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - image
+      - description
+    severity: 2
+    range:
+      start:
+        line: 122
+        character: 23
+      end:
+        line: 122
+        character: 59
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - baseURL
+    severity: 2
+    range:
+      start:
+        line: 123
+        character: 16
+      end:
+        line: 126
+        character: 30
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - baseURL
+    severity: 0
+    range:
+      start:
+        line: 123
+        character: 16
+      end:
+        line: 126
+        character: 30
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - baseURL
+    severity: 0
+    range:
+      start:
+        line: 123
+        character: 16
+      end:
+        line: 126
+        character: 30
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - baseURL
+      - description
+    severity: 2
+    range:
+      start:
+        line: 126
+        character: 23
+      end:
+        line: 126
+        character: 30
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - humanURL
+    severity: 2
+    range:
+      start:
+        line: 127
+        character: 17
+      end:
+        line: 130
+        character: 31
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - humanURL
+    severity: 0
+    range:
+      start:
+        line: 127
+        character: 17
+      end:
+        line: 130
+        character: 31
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - humanURL
+    severity: 0
+    range:
+      start:
+        line: 127
+        character: 17
+      end:
+        line: 130
+        character: 31
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - humanURL
+      - description
+    severity: 2
+    range:
+      start:
+        line: 130
+        character: 23
+      end:
+        line: 130
+        character: 31
+  - code: openapi-schema-properties-array-maxitems-error
+    message: Schema Array Properties MUST Have Max Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - tags
+    severity: 0
+    range:
+      start:
+        line: 131
+        character: 13
+      end:
+        line: 136
+        character: 47
+  - code: openapi-schema-properties-array-maxitems-info
+    message: Schema Array Properties Have Max Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 131
+        character: 13
+      end:
+        line: 136
+        character: 47
+  - code: openapi-schema-properties-array-minitems-error
+    message: Schema Array Properties MUST Have Min Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - tags
+    severity: 0
+    range:
+      start:
+        line: 131
+        character: 13
+      end:
+        line: 136
+        character: 47
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 131
+        character: 13
+      end:
+        line: 136
+        character: 47
+  - code: openapi-schema-properties-array-items-info
+    message: Schema Array Properties Has Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - tags
+      - items
+    severity: 2
+    range:
+      start:
+        line: 133
+        character: 16
+      end:
+        line: 135
+        character: 24
+  - code: openapi-schema-properties-array-maxitems-error
+    message: Schema Array Properties MUST Have Max Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - properties
+    severity: 0
+    range:
+      start:
+        line: 137
+        character: 19
+      end:
+        line: 141
+        character: 27
+  - code: openapi-schema-properties-array-maxitems-info
+    message: Schema Array Properties Have Max Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 137
+        character: 19
+      end:
+        line: 141
+        character: 27
+  - code: openapi-schema-properties-array-minitems-error
+    message: Schema Array Properties MUST Have Min Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - properties
+    severity: 0
+    range:
+      start:
+        line: 137
+        character: 19
+      end:
+        line: 141
+        character: 27
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 137
+        character: 19
+      end:
+        line: 141
+        character: 27
+  - code: openapi-schema-properties-array-items-info
+    message: Schema Array Properties Has Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - properties
+      - items
+    severity: 2
+    range:
+      start:
+        line: 139
+        character: 16
+      end:
+        line: 140
+        character: 49
+  - code: openapi-schema-properties-array-maxitems-error
+    message: Schema Array Properties MUST Have Max Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - contact
+    severity: 0
+    range:
+      start:
+        line: 142
+        character: 16
+      end:
+        line: 146
+        character: 62
+  - code: openapi-schema-properties-array-maxitems-info
+    message: Schema Array Properties Have Max Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - contact
+    severity: 2
+    range:
+      start:
+        line: 142
+        character: 16
+      end:
+        line: 146
+        character: 62
+  - code: openapi-schema-properties-array-minitems-error
+    message: Schema Array Properties MUST Have Min Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - contact
+    severity: 0
+    range:
+      start:
+        line: 142
+        character: 16
+      end:
+        line: 146
+        character: 62
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - contact
+    severity: 2
+    range:
+      start:
+        line: 142
+        character: 16
+      end:
+        line: 146
+        character: 62
+  - code: openapi-schema-properties-array-items-info
+    message: Schema Array Properties Has Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - contact
+      - items
+    severity: 2
+    range:
+      start:
+        line: 144
+        character: 16
+      end:
+        line: 145
+        character: 48
+  - code: openapi-schema-properties-array-maxitems-error
+    message: Schema Array Properties MUST Have Max Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - meta
+    severity: 0
+    range:
+      start:
+        line: 147
+        character: 13
+      end:
+        line: 150
+        character: 56
+  - code: openapi-schema-properties-array-maxitems-info
+    message: Schema Array Properties Have Max Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - meta
+    severity: 2
+    range:
+      start:
+        line: 147
+        character: 13
+      end:
+        line: 150
+        character: 56
+  - code: openapi-schema-properties-array-minitems-error
+    message: Schema Array Properties MUST Have Min Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - meta
+    severity: 0
+    range:
+      start:
+        line: 147
+        character: 13
+      end:
+        line: 150
+        character: 56
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - meta
+    severity: 2
+    range:
+      start:
+        line: 147
+        character: 13
+      end:
+        line: 150
+        character: 56
+  - code: openapi-schema-properties-array-items-info
+    message: Schema Array Properties Has Items
+    path:
+      - components
+      - schemas
+      - API
+      - properties
+      - meta
+      - items
+    severity: 2
+    range:
+      start:
+        line: 149
+        character: 16
+      end:
+        line: 150
+        character: 56
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - Maintainer
+    severity: 2
+    range:
+      start:
+        line: 151
+        character: 15
+      end:
+        line: 161
+        character: 20
+  - code: openapi-schema-type-error
+    message: Schema MUST Have Type Property
+    path:
+      - components
+      - schemas
+      - Maintainer
+    severity: 0
+    range:
+      start:
+        line: 151
+        character: 15
+      end:
+        line: 161
+        character: 20
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - Maintainer
+      - description
+    severity: 2
+    range:
+      start:
+        line: 152
+        character: 19
+      end:
+        line: 152
+        character: 82
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Maintainer
+      - properties
+      - name
+    severity: 2
+    range:
+      start:
+        line: 156
+        character: 13
+      end:
+        line: 159
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Maintainer
+      - properties
+      - name
+    severity: 0
+    range:
+      start:
+        line: 156
+        character: 13
+      end:
+        line: 159
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - Maintainer
+      - properties
+      - name
+      - description
+    severity: 2
+    range:
+      start:
+        line: 158
+        character: 23
+      end:
+        line: 158
+        character: 27
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - Maintainer
+      - properties
+      - name
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 159
+        character: 21
+      end:
+        line: 159
+        character: 22
+  - code: openapi-schema-names-pascal-case-error
+    message: Schema Names MUST Be PascalCase.
+    path:
+      - components
+      - schemas
+      - metaInformation
+    severity: 0
+    range:
+      start:
+        line: 162
+        character: 20
+      end:
+        line: 171
+        character: 22
+  - code: openapi-schema-type-error
+    message: Schema MUST Have Type Property
+    path:
+      - components
+      - schemas
+      - metaInformation
+    severity: 0
+    range:
+      start:
+        line: 162
+        character: 20
+      end:
+        line: 171
+        character: 22
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - metaInformation
+      - description
+    severity: 2
+    range:
+      start:
+        line: 163
+        character: 19
+      end:
+        line: 163
+        character: 41
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - metaInformation
+      - properties
+      - key
+    severity: 0
+    range:
+      start:
+        line: 168
+        character: 12
+      end:
+        line: 169
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - metaInformation
+      - properties
+      - key
+    severity: 2
+    range:
+      start:
+        line: 168
+        character: 12
+      end:
+        line: 169
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - metaInformation
+      - properties
+      - key
+    severity: 0
+    range:
+      start:
+        line: 168
+        character: 12
+      end:
+        line: 169
+        character: 22
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - metaInformation
+      - properties
+      - key
+    severity: 0
+    range:
+      start:
+        line: 168
+        character: 12
+      end:
+        line: 169
+        character: 22
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - metaInformation
+      - properties
+      - value
+    severity: 0
+    range:
+      start:
+        line: 170
+        character: 14
+      end:
+        line: 171
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - metaInformation
+      - properties
+      - value
+    severity: 2
+    range:
+      start:
+        line: 170
+        character: 14
+      end:
+        line: 171
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - metaInformation
+      - properties
+      - value
+    severity: 0
+    range:
+      start:
+        line: 170
+        character: 14
+      end:
+        line: 171
+        character: 22
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - metaInformation
+      - properties
+      - value
+    severity: 0
+    range:
+      start:
+        line: 170
+        character: 14
+      end:
+        line: 171
+        character: 22
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - Contact
+    severity: 2
+    range:
+      start:
+        line: 172
+        character: 12
+      end:
+        line: 201
+        character: 42
+  - code: openapi-schema-type-error
+    message: Schema MUST Have Type Property
+    path:
+      - components
+      - schemas
+      - Contact
+    severity: 0
+    range:
+      start:
+        line: 172
+        character: 12
+      end:
+        line: 201
+        character: 42
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - Contact
+      - description
+    severity: 2
+    range:
+      start:
+        line: 173
+        character: 19
+      end:
+        line: 173
+        character: 60
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - FN
+    severity: 0
+    range:
+      start:
+        line: 177
+        character: 11
+      end:
+        line: 179
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - FN
+    severity: 2
+    range:
+      start:
+        line: 177
+        character: 11
+      end:
+        line: 179
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - FN
+    severity: 0
+    range:
+      start:
+        line: 177
+        character: 11
+      end:
+        line: 179
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - FN
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 179
+        character: 21
+      end:
+        line: 179
+        character: 22
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - email
+    severity: 0
+    range:
+      start:
+        line: 180
+        character: 14
+      end:
+        line: 182
+        character: 23
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - email
+    severity: 2
+    range:
+      start:
+        line: 180
+        character: 14
+      end:
+        line: 182
+        character: 23
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - email
+    severity: 0
+    range:
+      start:
+        line: 180
+        character: 14
+      end:
+        line: 182
+        character: 23
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - email
+    severity: 0
+    range:
+      start:
+        line: 180
+        character: 14
+      end:
+        line: 182
+        character: 23
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - organizationName
+    severity: 0
+    range:
+      start:
+        line: 183
+        character: 25
+      end:
+        line: 185
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - organizationName
+    severity: 2
+    range:
+      start:
+        line: 183
+        character: 25
+      end:
+        line: 185
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - organizationName
+    severity: 0
+    range:
+      start:
+        line: 183
+        character: 25
+      end:
+        line: 185
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - organizationName
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 185
+        character: 21
+      end:
+        line: 185
+        character: 22
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - adr
+    severity: 0
+    range:
+      start:
+        line: 186
+        character: 12
+      end:
+        line: 187
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - adr
+    severity: 2
+    range:
+      start:
+        line: 186
+        character: 12
+      end:
+        line: 187
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - adr
+    severity: 0
+    range:
+      start:
+        line: 186
+        character: 12
+      end:
+        line: 187
+        character: 22
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - adr
+    severity: 0
+    range:
+      start:
+        line: 186
+        character: 12
+      end:
+        line: 187
+        character: 22
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - tel
+    severity: 0
+    range:
+      start:
+        line: 188
+        character: 12
+      end:
+        line: 190
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - tel
+    severity: 2
+    range:
+      start:
+        line: 188
+        character: 12
+      end:
+        line: 190
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - tel
+    severity: 0
+    range:
+      start:
+        line: 188
+        character: 12
+      end:
+        line: 190
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - tel
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 190
+        character: 21
+      end:
+        line: 190
+        character: 22
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - X-github
+    severity: 0
+    range:
+      start:
+        line: 191
+        character: 17
+      end:
+        line: 192
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - X-github
+    severity: 2
+    range:
+      start:
+        line: 191
+        character: 17
+      end:
+        line: 192
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - X-github
+    severity: 0
+    range:
+      start:
+        line: 191
+        character: 17
+      end:
+        line: 192
+        character: 22
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - X-github
+    severity: 0
+    range:
+      start:
+        line: 191
+        character: 17
+      end:
+        line: 192
+        character: 22
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - photo
+    severity: 0
+    range:
+      start:
+        line: 193
+        character: 14
+      end:
+        line: 195
+        character: 42
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - photo
+    severity: 2
+    range:
+      start:
+        line: 193
+        character: 14
+      end:
+        line: 195
+        character: 42
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - photo
+    severity: 0
+    range:
+      start:
+        line: 193
+        character: 14
+      end:
+        line: 195
+        character: 42
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - photo
+    severity: 0
+    range:
+      start:
+        line: 193
+        character: 14
+      end:
+        line: 195
+        character: 42
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - vCard
+    severity: 0
+    range:
+      start:
+        line: 196
+        character: 14
+      end:
+        line: 198
+        character: 42
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - vCard
+    severity: 2
+    range:
+      start:
+        line: 196
+        character: 14
+      end:
+        line: 198
+        character: 42
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - vCard
+    severity: 0
+    range:
+      start:
+        line: 196
+        character: 14
+      end:
+        line: 198
+        character: 42
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - vCard
+    severity: 0
+    range:
+      start:
+        line: 196
+        character: 14
+      end:
+        line: 198
+        character: 42
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - url
+    severity: 0
+    range:
+      start:
+        line: 199
+        character: 12
+      end:
+        line: 201
+        character: 42
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - url
+    severity: 2
+    range:
+      start:
+        line: 199
+        character: 12
+      end:
+        line: 201
+        character: 42
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - url
+    severity: 0
+    range:
+      start:
+        line: 199
+        character: 12
+      end:
+        line: 201
+        character: 42
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - Contact
+      - properties
+      - url
+    severity: 0
+    range:
+      start:
+        line: 199
+        character: 12
+      end:
+        line: 201
+        character: 42
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - Property
+    severity: 2
+    range:
+      start:
+        line: 202
+        character: 13
+      end:
+        line: 214
+        character: 42
+  - code: openapi-schema-type-error
+    message: Schema MUST Have Type Property
+    path:
+      - components
+      - schemas
+      - Property
+    severity: 0
+    range:
+      start:
+        line: 202
+        character: 13
+      end:
+        line: 214
+        character: 42
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - Property
+      - description
+    severity: 2
+    range:
+      start:
+        line: 203
+        character: 19
+      end:
+        line: 203
+        character: 44
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Property
+      - properties
+      - type
+    severity: 0
+    range:
+      start:
+        line: 208
+        character: 13
+      end:
+        line: 211
+        character: 187
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Property
+      - properties
+      - type
+    severity: 2
+    range:
+      start:
+        line: 208
+        character: 13
+      end:
+        line: 211
+        character: 187
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Property
+      - properties
+      - type
+    severity: 0
+    range:
+      start:
+        line: 208
+        character: 13
+      end:
+        line: 211
+        character: 187
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - Property
+      - properties
+      - type
+    severity: 0
+    range:
+      start:
+        line: 208
+        character: 13
+      end:
+        line: 211
+        character: 187
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Property
+      - properties
+      - url
+    severity: 0
+    range:
+      start:
+        line: 212
+        character: 12
+      end:
+        line: 214
+        character: 42
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Property
+      - properties
+      - url
+    severity: 2
+    range:
+      start:
+        line: 212
+        character: 12
+      end:
+        line: 214
+        character: 42
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Property
+      - properties
+      - url
+    severity: 0
+    range:
+      start:
+        line: 212
+        character: 12
+      end:
+        line: 214
+        character: 42
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - Property
+      - properties
+      - url
+    severity: 0
+    range:
+      start:
+        line: 212
+        character: 12
+      end:
+        line: 214
+        character: 42
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - Tag
+    severity: 2
+    range:
+      start:
+        line: 215
+        character: 8
+      end:
+        line: 216
+        character: 68
+  - code: openapi-schema-type-error
+    message: Schema MUST Have Type Property
+    path:
+      - components
+      - schemas
+      - Tag
+    severity: 0
+    range:
+      start:
+        line: 215
+        character: 8
+      end:
+        line: 216
+        character: 68
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - Tag
+      - description
+    severity: 2
+    range:
+      start:
+        line: 216
+        character: 19
+      end:
+        line: 216
+        character: 68
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - Results
+    severity: 2
+    range:
+      start:
+        line: 217
+        character: 12
+      end:
+        line: 223
+        character: 22
+  - code: openapi-schema-type-error
+    message: Schema MUST Have Type Property
+    path:
+      - components
+      - schemas
+      - Results
+    severity: 0
+    range:
+      start:
+        line: 217
+        character: 12
+      end:
+        line: 223
+        character: 22
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - Results
+      - description
+    severity: 2
+    range:
+      start:
+        line: 218
+        character: 19
+      end:
+        line: 218
+        character: 44
+  - code: openapi-schema-properties-descriptions-error
+    message: Schema Properties MUST Have Description
+    path:
+      - components
+      - schemas
+      - Results
+      - properties
+      - results
+    severity: 0
+    range:
+      start:
+        line: 222
+        character: 16
+      end:
+        line: 223
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - Results
+      - properties
+      - results
+    severity: 2
+    range:
+      start:
+        line: 222
+        character: 16
+      end:
+        line: 223
+        character: 22
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - Results
+      - properties
+      - results
+    severity: 0
+    range:
+      start:
+        line: 222
+        character: 16
+      end:
+        line: 223
+        character: 22
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - Results
+      - properties
+      - results
+    severity: 0
+    range:
+      start:
+        line: 222
+        character: 16
+      end:
+        line: 223
+        character: 22
