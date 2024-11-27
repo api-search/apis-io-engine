@@ -97,7 +97,7 @@ common:
     type: APIValidation
 created: '2024-08-20'
 modified: '2024-11-26'
-position: Producer
+position: Consumer
 description: >-
   This is the contract for the APIs.io Engine API used to power the APIs.io
   search engine.
