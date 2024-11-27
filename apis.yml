@@ -27,7 +27,7 @@ apis:
 name: APIs.io Engine API
 tags:
   - Engine
-type: Index
+type: Contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-io/apis-io-api-logo.jpg
 access: 1st-Party
 common:
@@ -97,7 +97,7 @@ common:
     type: APIValidation
 created: '2024-08-20'
 modified: '2024-11-26'
-position: Consumer
+position: Producing
 description: >-
   This is the contract for the APIs.io Engine API used to power the APIs.io
   search engine.
